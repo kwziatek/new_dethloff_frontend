@@ -1,0 +1,11 @@
+Things to check out:
+    - css root element
+    - how to avoid code repetition (mainly html, css files) -> template;
+
+ Things to consider next:
+    - what should login page (more or less, doesn't have to be perfect)
+    - what should be the page template after
+
+  Things to skip:
+    - about school page 
+    - contact page

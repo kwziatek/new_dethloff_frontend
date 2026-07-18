@@ -1,0 +1,91 @@
+@import "./global.css";
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    --main-font: 'Cinzel Decorative', serif;
+}
+
+body {
+    font-family: var(--main-font);
+    height: 100vh;
+    width: 100vw;
+    background-color: #D4DE95;
+    color: #3D4127;
+}
+
+header {
+    height: 10vh;
+}
+
+main {
+    height: 80vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 3rem;
+}
+
+footer {
+    height: 10vh;
+}
+
+h1 {
+    font-size: 3rem;
+    display: flex;
+    justify-content: center;
+}
+
+h2 {
+    font-size: 1rem;
+    display: flex;
+    justify-content: center;
+}
+
+a {
+    color: #3D4127;
+    text-decoration: none;
+    font-weight: bold;
+    -webkit-user-drag: none;
+}
+
+.box {
+    border: 2px solid #636B2F;
+    width: 15rem;
+    height: 15rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 25%;
+    background-color: #BAC095;
+}
+
+.goBack {
+    display: inline-block;
+    background-color: #BAC095;
+    border: 2px solid #636B2F;
+    margin-left: 2rem;
+    padding: 0.5rem;
+    border-radius: 20%;
+}
+
+.logOut {
+    display: inline-block;
+    background-color: #BAC095;
+    border: 2px solid #636B2F;
+    margin-left: 2rem;
+    padding: 0.5rem;
+    border-radius: 20%;
+    color: red;
+}
+
+.buttonColumn {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    align-items: flex-start;
+}
