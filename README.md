@@ -1,4 +1,4 @@
-This project vanilla JS frontend project.
+This vanilla JS frontend project.
 I use node.js to make the coding easier with following tools:
  - npm
  - vite
