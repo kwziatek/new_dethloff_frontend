@@ -32,7 +32,6 @@ const logIn = async (login, password) => {
     } catch(error) {
         console.log(error.message);
         console.error("Błąd logowania: " + error);
-        alert("Logowanie nie powiodło się!")
+        alert("Logowanie nie powiodło się!");
     }
-    
-}
+};

@@ -7,8 +7,12 @@ export default defineConfig({
     rollupOptions: {
       input: {
         main: resolve(__dirname, 'index.html'),
-        about: resolve(__dirname, 'pages/about.html'),
-        contact: resolve(__dirname, 'pages/contact.html') // Add more pages here as you grow
+        aboutSchool: resolve(__dirname, 'pages/aboutSchool.html'),
+        contact: resolve(__dirname, 'pages/contact.html'),
+        login: resolve(__dirname, 'pages/login.html'),
+        dashboard: resolve(__dirname, 'pages/dashboard.html'),
+        students: resolve(__dirname, 'pages/students.html')
+         // Add more
       }
     }
   },
@@ -20,7 +24,7 @@ export default defineConfig({
       configureServer(server) {
         server.middlewares.use((req, res, next) => {
           // If the URL doesn't have a file extension (like .css or .html) and isn't the home page
-          if (!req.url.includes('.') && req.url !== '/') {
+          if (req.url && !req.url.startsWith('/@') && !req.url.includes('.') && req.url !== '/') {
             req.url += '.html'; // Secretly append .html for the server
           }
           next();
