@@ -1,10 +1,11 @@
 Things to do:
- - student page 
+ - student page
 
 Things to check out:
  -
 
 Things to consider next:
+  - how to handle jwt_token expiration?
   - how to design the students page? Initial idea: lets call for all of the students to BE and display them (part of them). Let's also add a search bar that would allow to search after name or surname. Obviously the results (list of students) would be shown accordingly.
   - how to design the teachers page?
   - how to design the groups page?
