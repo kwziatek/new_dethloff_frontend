@@ -1,5 +1,29 @@
 @import "./global.css";
 
 main {
-    display: block;
+    flex-direction: column;
+}
+
+.student {
+    border: 2px black solid;
+    margin: 2px;
+}
+
+.setOfStudents {
+    /* border: 2px red solid; */
+    font-size: 2rem;
+    width: max-content;
+    /* width: calc(max-content + 1rem); */
+}
+
+input {
+    display: inline;
+    font-size: 3rem;
+    text-decoration: none;
+    background-color: #BAC095;
+    padding: 0.25rem;
+}
+
+.student {
+    padding: 0.5rem;
 }
