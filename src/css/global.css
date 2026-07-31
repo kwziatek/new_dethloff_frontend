@@ -64,6 +64,12 @@ a {
     border-radius: 25%;
     background-color: #BAC095;
     text-align: justify;
+    transition: background-color 0.2s, color 0.2s;
+}
+
+.box:hover {
+    color: #BAC095;
+    background-color: #3D4127;
 }
 
 #goBack {
@@ -73,6 +79,12 @@ a {
     margin-left: 2rem;
     padding: 0.5rem;
     border-radius: 20%;
+    transition: background-color 0.2s, color 0.2s;
+}
+
+#goBack:hover {
+  background-color: #3D4127;
+  color: #BAC095;
 }
 
 #logOut {
@@ -83,6 +95,12 @@ a {
     padding: 0.5rem;
     border-radius: 20%;
     color: red;
+    transition: background-color 0.2s, color 0.2s;
+}
+
+#logOut:hover {
+    background-color: red;
+    color: #3D4127;
 }
 
 #buttonColumn {

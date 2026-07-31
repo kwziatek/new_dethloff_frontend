@@ -26,4 +26,12 @@ input {
 
 .student {
     padding: 0.5rem;
+    background-color: #BAC095;
+    color: #3D4127;
+    transition: background-color 0.2s, color 0.2s;
+}
+
+.student:hover {
+  background-color: #3D4127;
+  color: #BAC095;
 }
