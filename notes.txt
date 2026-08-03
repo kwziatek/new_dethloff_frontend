@@ -1,7 +1,7 @@
 Things to do:
- - student page
-    - change the blue color when mouse over filter bar (would be good to change in the global css)
-    - highlight the paragrapghs (or anchors) when mouse over (could also be done in the global css)
+  - student page
+    - create 2 or 3 columns out of students
+  - create local var for the domain to use on pages (when developing it should be http://localhost:8080/,for producation the server address)
 
 Things to check out:
  -
@@ -16,10 +16,15 @@ Things to skip:
   - about school page 
   - contact page
 
-  file .env (must be in .gitignore)
-    keep secrets 
-      vite_server_url = adres (http://localhost:8080/)
+file .env (must be in .gitignore)
+  keep secrets 
+    vite_server_url = address (http://localhost:8080/)
 
-      the idea is to keep the be ip adress as a global var and use it across the app
+    the idea is to keep the be ip adress as a global var and use it across the app
 
-include the flyway scripts in the .gitignore
+
+
+done: 
+ - student page
+    - change the blue color when mouse over filter bar (would be good to change in the global css)
+    - highlight the paragrapghs (or anchors) when mouse over (could also be done in the global css)
