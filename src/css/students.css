@@ -11,13 +11,15 @@ main {
 
 .setOfStudents {
     /* border: 2px red solid; */
-    font-size: 2rem;
-    width: max-content;
-    /* width: calc(max-content + 1rem); */
+    width: 90vw;
+    display: grid;
+    grid-template-columns: 25% 25% 25% 25%;
+    grid-template-rows: repeat(8, 12,5%);
+    font-size: 1.3rem;
 }
 
 input {
-    display: inline;
+    display: block;
     font-size: 3rem;
     text-decoration: none;
     background-color: #BAC095;
@@ -34,4 +36,32 @@ input {
 .student:hover {
   background-color: #3D4127;
   color: #BAC095;
+}
+
+#addStudent {
+    display: inline-block;
+    background-color: #BAC095;
+    border: 2px solid #636B2F;
+    margin-left: 2rem;
+    padding: 0.5rem;
+    border-radius: 20%;
+    transition: background-color 0.2s, color 0.2s;
+}
+
+#addStudent:hover {
+  background-color: #3D4127;
+  color: #BAC095;
+}
+
+dialog {
+  margin: auto; 
+  border: none;
+  border-radius: 8px;
+  padding: 2rem;
+  background-color: #636B2F;
+}
+
+dialog::backdrop {
+    background: rgba(0,0,0,0.5);
+    backdrop-filter: blur(2px);
 }

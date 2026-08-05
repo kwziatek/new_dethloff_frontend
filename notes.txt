@@ -1,6 +1,8 @@
 Things to do:
   - student page
-    - create 2 or 3 columns out of students
+    - finish the student adding window - clear fields after clicking cancel
+    - add the redirection to new page after clicking "Zapisz"
+    - handle the one template many subpages logic (there should be a subpage for each student with details about them, how to handle it?)
   - create local var for the domain to use on pages (when developing it should be http://localhost:8080/,for producation the server address)
 
 Things to check out:
@@ -20,7 +22,7 @@ file .env (must be in .gitignore)
   keep secrets 
     vite_server_url = address (http://localhost:8080/)
 
-    the idea is to keep the be ip adress as a global var and use it across the app
+    the idea is to keep the ip adress as a global var and use it across the app
 
 
 
@@ -28,3 +30,4 @@ done:
  - student page
     - change the blue color when mouse over filter bar (would be good to change in the global css)
     - highlight the paragrapghs (or anchors) when mouse over (could also be done in the global css)
+    - create 2 or 3 columns out of students

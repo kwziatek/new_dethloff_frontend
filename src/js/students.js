@@ -2,7 +2,8 @@ import axios from "axios";
 
 const listOfStudentsSpace = document.querySelector(".setOfStudents");
 const filterBar = document.querySelector("#filterBar");
-const availableSpace = 16;
+const availableSpace = 32;
+const modal = document.getElementById("studentModal");
 
 const fetchStudents = async () => {
     try {
@@ -56,6 +57,9 @@ const enableFilterBar = async () => {
 const workflow = async () => {
     await fetchStudents();
     enableFilterBar();
+    document.getElementById("addStudent").addEventListener("click", () => {
+        modal.showModal();
+    })
 };
 
 workflow();

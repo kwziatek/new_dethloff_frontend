@@ -20,6 +20,9 @@
             <div id="logOut">
                 Wyloguj
             </div>
+            <div id="addStudent">
+                Dodaj ucznia
+            </div>
         </div>
     </header>
     <main>
@@ -33,4 +36,16 @@
 
     </footer>
 </body>
+
+<dialog id="studentModal">
+    <form method="dialog" id="studentForm">
+        <h3> Dodawanie ucznia </h3>
+        <input type="text" placeholder="Imię" required autofocus/>
+        <input type="text" placeholder="Naziwsko" required/>
+        <input type="text" placeholder="Pesel" required/>
+        <input type="text" placeholder="Data urodzenia" required/>
+        <button class="save" type="submit"> Zapisz </button>
+        <button class="cancel" type="button" onclick="studentModal.close()"> Anuluj </button>
+    </form>
+</dialog>
 </html>
