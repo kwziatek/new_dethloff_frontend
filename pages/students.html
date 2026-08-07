@@ -40,12 +40,12 @@
 <dialog id="studentModal">
     <form method="dialog" id="studentForm">
         <h3> Dodawanie ucznia </h3>
-        <input type="text" placeholder="Imię" required autofocus/>
-        <input type="text" placeholder="Naziwsko" required/>
-        <input type="text" placeholder="Pesel" required/>
-        <input type="text" placeholder="Data urodzenia" required/>
-        <button class="save" type="submit"> Zapisz </button>
-        <button class="cancel" type="button" onclick="studentModal.close()"> Anuluj </button>
+        <input name="name" type="text" placeholder="Imię" required autofocus/>
+        <input name="surname" type="text" placeholder="Naziwsko" required/>
+        <input name="pesel" type="text" placeholder="Pesel" required/>
+        <input name="birthDate" type="text" placeholder="Data urodzenia" required/>
+        <button class="save" id="saveStudent" type="submit"> Zapisz </button>
+        <button class="cancel" id="cancelAddingStudent" type="button" onclick="studentModal.close()"> Anuluj </button>
     </form>
 </dialog>
 </html>

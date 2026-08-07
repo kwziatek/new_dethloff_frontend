@@ -4,6 +4,7 @@ const listOfStudentsSpace = document.querySelector(".setOfStudents");
 const filterBar = document.querySelector("#filterBar");
 const availableSpace = 32;
 const modal = document.getElementById("studentModal");
+const form = document.getElementById("studentForm");
 
 const fetchStudents = async () => {
     try {
@@ -20,7 +21,7 @@ const fetchStudents = async () => {
             const newP = document.createElement("p");
             newP.classList.add('student');
             newP.innerHTML = element.name + " " + element.surname;
-            newA.href = "/pages/students/" + element.id;
+            newA.href = "/pages/studentDetails" + "?id=" + element.id;
             newA.classList.add('studentAnchor');
             newA.appendChild(newP);
             if(shownCount >= availableSpace) {
@@ -58,8 +59,30 @@ const workflow = async () => {
     await fetchStudents();
     enableFilterBar();
     document.getElementById("addStudent").addEventListener("click", () => {
+        form.reset();
         modal.showModal();
-    })
+    });
+    form.addEventListener("submit", async (e) => {
+        // e.preventDefault();
+
+        const formData = new FormData(form);
+        const payload = Object.fromEntries(formData);
+
+        const auth = {
+            headers: {
+                Authorization: `Bearer ${localStorage.getItem("jwt_token")}`
+            }
+        };
+        try {
+            const response = await axios.post("http://localhost:8080/api/students", payload, auth);
+            const data = await response.data;
+            window.location.href = `/pages/studentDetails?id=${data.id}`;
+            modal.close();
+        } catch (error) {
+            console.error("Failed to add student: ", error);
+        }
+        
+    });
 };
 
 workflow();
