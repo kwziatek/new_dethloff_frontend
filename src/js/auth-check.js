@@ -6,6 +6,8 @@ const PUBLIC_PAGES = ['/', '/pages/contact', '/pages/login', '/pages/aboutSchool
 const currentPath = window.location.pathname;
 const token = localStorage.getItem('jwt_token');
 
+const API_BASE = window.API_URL || 'http://localhost:8080';
+
 function redirectToLogin(error) {
     console.error("Session expired or invalid token: ", error);
     localStorage.removeItem('jwt_token');
@@ -16,7 +18,7 @@ if(!PUBLIC_PAGES.includes(currentPath)) {
     if (!token) {
         redirectToLogin();
     } else {
-        fetch("http://localhost:8080/api/auth/me", {
+        fetch("${API_BASE}/api/auth/me", {
             headers: {
                 Authorization: `Bearer ${token}`
             }

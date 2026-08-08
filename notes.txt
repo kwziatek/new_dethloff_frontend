@@ -1,10 +1,9 @@
 Things to do:
-  - create local var for the domain to use on pages (when developing it should be http://localhost:8080/,for producation the server address)
+  - deisgn of the studentDetails page
 Things to check out:
   -
 
 Things to consider next:
-  - deisgn of the studentDetails page
   - how to design the teachers page?
   - how to design the groups page?
   - how to design the management page?
@@ -29,4 +28,8 @@ done:
     - create 2 or 3 columns out of students
     - add the redirection to new page after clicking "Zapisz"
     - handle the one template many subpages logic (there should be a subpage for each student with details about them, how to handle it?)
-    
+
+  - handle .env files 
+    - added .env.developemet and .env.production
+    - create the var for dev and production BE API_URL
+    - used newly created var in js scripts that called BE

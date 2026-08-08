@@ -1,5 +1,8 @@
 import axios from "axios";
 
+const API_URL = import.meta.env.VITE_API_URL;
+const api = axios.create({baseURL: API_URL});
+
 const listOfStudentsSpace = document.querySelector(".setOfStudents");
 const filterBar = document.querySelector("#filterBar");
 const availableSpace = 32;
@@ -13,7 +16,7 @@ const fetchStudents = async () => {
                 Authorization: `Bearer ${localStorage.getItem('jwt_token')}`
             }
         }
-        const response = await axios.get('http://localhost:8080/api/students', auth);
+        const response = await api.get('/api/students', auth);
         const data = response.data;
         let shownCount = 0;
         data.forEach(element => {
@@ -74,7 +77,7 @@ const workflow = async () => {
             }
         };
         try {
-            const response = await axios.post("http://localhost:8080/api/students", payload, auth);
+            const response = await api.post("/api/students", payload, auth);
             const data = await response.data;
             window.location.href = `/pages/studentDetails?id=${data.id}`;
             modal.close();

@@ -1,5 +1,8 @@
 import axios from "axios";
 
+const API_URL = import.meta.env.VITE_API_URL;
+const api = axios.create({baseURL: API_URL});
+
 const button = document.querySelector("#submitButton");
 const loginInput = document.querySelector("#login");
 const passwordInput = document.querySelector("#password");
@@ -14,7 +17,7 @@ button.addEventListener("click", (e) => {
 
 const logIn = async (login, password) => {
     try {
-        const response = await axios.post("http://localhost:8080/login", {
+        const response = await api.post("/login", {
             username: login,
             password: password
         });
