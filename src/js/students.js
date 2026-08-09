@@ -58,13 +58,14 @@ const enableFilterBar = async () => {
     });
 };
 
-const workflow = async () => {
-    await fetchStudents();
-    enableFilterBar();
+const addStudentButtonAction = async () => {
     document.getElementById("addStudent").addEventListener("click", () => {
         form.reset();
         modal.showModal();
     });
+}
+
+const submitButtonAction = async () => {
     form.addEventListener("submit", async (e) => {
         // e.preventDefault();
 
@@ -86,6 +87,13 @@ const workflow = async () => {
         }
         
     });
+}
+
+const workflow = async () => {
+    await fetchStudents();
+    enableFilterBar();
+    addStudentButtonAction();
+    submitButtonAction();
 };
 
 workflow();

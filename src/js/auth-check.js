@@ -18,7 +18,7 @@ if(!PUBLIC_PAGES.includes(currentPath)) {
     if (!token) {
         redirectToLogin();
     } else {
-        fetch("${API_BASE}/api/auth/me", {
+        fetch(`${API_BASE}/api/auth/me`, {
             headers: {
                 Authorization: `Bearer ${token}`
             }

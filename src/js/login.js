@@ -11,7 +11,6 @@ button.addEventListener("click", (e) => {
     e.preventDefault();
     const login = loginInput.value;
     const password = passwordInput.value;
-    console.log(login + " " + password);
     logIn(login, password);
 });
 

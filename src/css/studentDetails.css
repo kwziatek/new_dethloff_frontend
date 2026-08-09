@@ -1,0 +1,18 @@
+input:read-only {
+    border:none;
+    background: transparent;
+    caret-color: transparent;
+    outline: none;
+}
+
+main {
+    justify-content: center;
+    align-items: center;
+}
+
+#basicData, #contactData, #guardianData, #companyData, #marketingData {
+    border: 2px black solid;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
