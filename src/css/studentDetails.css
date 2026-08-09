@@ -10,9 +10,21 @@ main {
     align-items: center;
 }
 
+input {
+    padding: 0.25rem;
+}
+
+
 #basicData, #contactData, #guardianData, #companyData, #marketingData {
     border: 2px black solid;
     display: flex;
     flex-direction: column;
     gap: 8px;
+    padding: 1rem;
+}
+
+h2 {
+    border-bottom: 2px solid black;
+    border-collapse: inherit;
+    padding: 0.8rem;
 }
