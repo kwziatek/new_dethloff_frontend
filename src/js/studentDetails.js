@@ -40,17 +40,40 @@ const fillPageWithStudentData = (data) => {
     document.querySelector("#studentJoiningDate").value = data.joiningDate || "";
 }
 
-
-try {
-    const auth = {
-        headers: {
-            Authorization: `Bearer ${localStorage.getItem("jwt_token")}`
+const fetchStudentData = async () => {
+    try {
+        const auth = {
+            headers: {
+                Authorization: `Bearer ${localStorage.getItem("jwt_token")}`
+            }
         }
+        const response = await api.get(`api/students/${id}`, auth);
+        const data = await response.data;
+        fillPageWithStudentData(data);
+        console.log(data);
+    } catch(error) {
+        console.error("Error fetching student details: " + error);
     }
-    const response = await api.get(`api/students/${id}`, auth);
-    const data = await response.data;
-    fillPageWithStudentData(data);
-    console.log(data);
-} catch(error) {
-    console.error("Error fetching student details: " + error);
 }
+
+const addEditEventListener = () => {
+    document.querySelector("#edit").addEventListener("click", () => {
+        document.querySelectorAll("input").forEach((dataInput) => {
+            console.log(dataInput);
+            dataInput.removeAttribute("readonly");
+        });
+        document.querySelector("#edit").textContent = "Zapisz";
+    });
+    
+}
+
+const onEditButtonClick = () => {
+    addEditEventListener();
+}
+
+const workflow = async () => {
+    await fetchStudentData();
+    onEditButtonClick();
+}
+
+workflow();

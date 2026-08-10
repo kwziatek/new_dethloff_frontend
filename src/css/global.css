@@ -80,6 +80,7 @@ a {
     padding: 0.5rem;
     border-radius: 20%;
     transition: background-color 0.2s, color 0.2s;
+    text-align: center;
 }
 
 #goBack:hover {
@@ -96,6 +97,7 @@ a {
     border-radius: 20%;
     color: red;
     transition: background-color 0.2s, color 0.2s;
+    text-align: center;
 }
 
 #logOut:hover {
@@ -103,9 +105,43 @@ a {
     color: #3D4127;
 }
 
+#delete {
+    display: inline-block;
+    background-color: #BAC095;
+    border: 2px solid #636B2F;
+    margin-right: 2rem;
+    padding: 0.5rem;
+    border-radius: 20%;
+    color: red;
+    transition: background-color 0.2s, color 0.2s;
+    text-align: center;
+}
+
+#delete:hover {
+    background-color: red;
+    color: #3D4127;
+}
+
+#edit {
+    display: inline-block;
+    background-color: #BAC095;
+    border: 2px solid #636B2F;
+    margin-right: 2rem;
+    padding: 0.5rem;
+    border-radius: 20%;
+    transition: background-color 0.2s, color 0.2s;
+    text-align: center;
+}
+
+#edit:hover {
+  background-color: #3D4127;
+  color: #BAC095;
+}
+
 #buttonColumn {
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
+    justify-content: space-between;
     gap: 10px;
     align-items: flex-start;
 }
