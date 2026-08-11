@@ -1,7 +1,10 @@
 Things to do:
-  - deisgn of the studentDetails page
+  - student details page
+    - edit/save button 
+      - call the BE API to save student details
+    - delete button
 Things to check out:
-  -
+  - js bubbling
 
 Things to consider next:
   - how to design the teachers page?
@@ -33,3 +36,10 @@ done:
     - added .env.developemet and .env.production
     - create the var for dev and production BE API_URL
     - used newly created var in js scripts that called BE
+  
+  - student details page
+    - create data sections
+    - create input fields with label
+    - fetach data from BE API and fill the input fields
+    - add edit/save button
+    - handle the edit/save logic
