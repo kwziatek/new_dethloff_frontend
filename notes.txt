@@ -1,7 +1,5 @@
 Things to do:
   - student details page
-    - edit/save button 
-      - call the BE API to save student details
     - delete button
 Things to check out:
   - js bubbling
@@ -43,3 +41,4 @@ done:
     - fetach data from BE API and fill the input fields
     - add edit/save button
     - handle the edit/save logic
+    - call the BE API to save student details

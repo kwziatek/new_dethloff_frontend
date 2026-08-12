@@ -2,13 +2,12 @@ import axios from "axios";
 
 const API_URL = import.meta.env.VITE_API_URL;
 const api = axios.create({baseURL: API_URL});
-const id = new URLSearchParams(window.location.search).get('id');
+const studentId = new URLSearchParams(window.location.search).get('id');
 const auth = {
     headers: {
         Authorization: `Bearer ${localStorage.getItem("jwt_token")}`
     }
 }
-let studentDetails = null;
 
 const fillPageWithStudentData = (data) => {
     document.querySelector("#studentName").value = data.name || "";;
@@ -54,6 +53,8 @@ const getStudentDataFromPage = () => {
     };
 
     const studentDetails = {
+        id: studentId,
+
         name: getVal("#studentName"),
         surname: getVal("#studentSurname"),
         pesel: getVal("#studentPESEL"),
@@ -94,9 +95,8 @@ const getStudentDataFromPage = () => {
 
 const fetchStudentData = async () => {
     try {
-        const response = await api.get(`api/students/${id}`, auth);
+        const response = await api.get(`api/students/${studentId}`, auth);
         const data = await response.data;
-        studentDetails = data;
         fillPageWithStudentData(data);
         console.log(data);
     } catch(error) {
@@ -104,7 +104,7 @@ const fetchStudentData = async () => {
     }
 }
 
-const handleEditSaveClick = () => {
+const handleEditSaveClick = async () => {
     const editBtn = document.querySelector("#edit");
     const inputs = document.querySelectorAll("input");
 
@@ -120,6 +120,7 @@ const handleEditSaveClick = () => {
         const studentData = getStudentDataFromPage();
 
         //TODO: call BE API 
+        await api.put("/api/students", getStudentDataFromPage(), auth);
 
         inputs.forEach(input => input.setAttribute("readonly", "true"));
         editBtn.textContent = "Edytuj";
