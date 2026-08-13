@@ -1,6 +1,8 @@
 Things to do:
   - student details page
-    - delete button
+    - add gender field
+    - fix the buttons, devide the page into to groups - general and page specific
+    - apply some styles on alerts and display them after successful and unsuccessful actions
 Things to check out:
   - js bubbling
 
@@ -42,3 +44,6 @@ done:
     - add edit/save button
     - handle the edit/save logic
     - call the BE API to save student details
+    - add delete button
+    - add a dialog to confirm studen deletion 
+    - call the BE API to delete student

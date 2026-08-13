@@ -7,7 +7,11 @@ const auth = {
     headers: {
         Authorization: `Bearer ${localStorage.getItem("jwt_token")}`
     }
-}
+};
+const modal = document.querySelector("#deleteModal");
+const deleteBtn = document.querySelector("#delete");
+const cancelBtn = document.querySelector("#cancelBtn");
+const confirmBtn = document.querySelector("#confirmBtn");
 
 const fillPageWithStudentData = (data) => {
     document.querySelector("#studentName").value = data.name || "";;
@@ -95,7 +99,7 @@ const getStudentDataFromPage = () => {
 
 const fetchStudentData = async () => {
     try {
-        const response = await api.get(`api/students/${studentId}`, auth);
+        const response = await api.get(`/api/students/${studentId}`, auth);
         const data = await response.data;
         fillPageWithStudentData(data);
         console.log(data);
@@ -130,6 +134,23 @@ const handleEditSaveClick = async () => {
 
 document.querySelector("#edit").addEventListener("click", handleEditSaveClick);
 
+deleteBtn.addEventListener("click", () => {
+    modal.showModal();
+});
+
+cancelBtn.addEventListener("click", () => {
+    modal.close();
+});
+
+confirmBtn.addEventListener("click", async () => {
+    modal.close();
+    try {
+        await api.delete(`/api/students/${studentId}`, auth);
+        window.location.href = "/pages/students";
+    } catch(error) {
+        console.log(error);
+    }
+});
 
 const workflow = async () => {
     await fetchStudentData();
