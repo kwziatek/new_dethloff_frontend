@@ -73,65 +73,65 @@ a {
 }
 
 #goBack {
-    display: inline-block;
+    /* display: inline-block;
     background-color: #BAC095;
     border: 2px solid #636B2F;
     padding: 0.5rem;
     border-radius: 20%;
     transition: background-color 0.2s, color 0.2s;
-    text-align: center;
+    text-align: center; */
 }
 
 #goBack:hover {
-  background-color: #3D4127;
-  color: #BAC095;
+  /* background-color: #3D4127;
+  color: #BAC095; */
 }
 
 #logOut {
-    display: inline-block;
+    /* display: inline-block;
     background-color: #BAC095;
     border: 2px solid #636B2F;
     padding: 0.5rem;
     border-radius: 20%;
     color: red;
     transition: background-color 0.2s, color 0.2s;
-    text-align: center;
+    text-align: center; */
 }
 
 #logOut:hover {
-    background-color: red;
-    color: #3D4127;
+    /* background-color: red;
+    color: #3D4127; */
 }
 
 #delete {
-    display: inline-block;
+    /* display: inline-block;
     background-color: #BAC095;
     border: 2px solid #636B2F;
     padding: 0.5rem;
     border-radius: 20%;
     color: red;
     transition: background-color 0.2s, color 0.2s;
-    text-align: center;
+    text-align: center; */
 }
 
 #delete:hover {
-    background-color: red;
-    color: #3D4127;
+    /* background-color: red;
+    color: #3D4127; */
 }
 
 #edit {
-    display: inline-block;
+    /* display: inline-block;
     background-color: #BAC095;
     border: 2px solid #636B2F;
     padding: 0.5rem;
     border-radius: 20%;
     transition: background-color 0.2s, color 0.2s;
-    text-align: center;
+    text-align: center; */
 }
 
 #edit:hover {
-  background-color: #3D4127;
-  color: #BAC095;
+  /* background-color: #3D4127;
+  color: #BAC095; */
 }
 
 #buttonColumns {
@@ -201,3 +201,15 @@ dialog::backdrop {
   border-radius: 4px;
   cursor: pointer;
 }
+
+.btn {
+    padding: 8px 16px;
+    border-radius: 6px;
+    border:none;
+    cursor: pointer;
+    font-weight: 500;
+}
+
+.btn-danger {background-color: #dc3545; color: white;}
+.btn-warning {background-color: #ffc107; color: #213529;}
+.btn-info {background-color: #0dcaf0; color: #212529;}

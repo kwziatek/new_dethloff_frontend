@@ -3,7 +3,8 @@ Things to do:
     - the idea is to create info and danger buttons classes, create specific styles for them and then just apply on newly created ones
   - apply some styles on alerts and display them after successful and unsuccessful actions
 Things to check out:
-  - js bubbling
+  - types of buttons
+  - js bubbling (done)
 
 Things to consider next:
   - how to design the teachers page?
