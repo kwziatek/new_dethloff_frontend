@@ -76,7 +76,6 @@ a {
     display: inline-block;
     background-color: #BAC095;
     border: 2px solid #636B2F;
-    margin-left: 2rem;
     padding: 0.5rem;
     border-radius: 20%;
     transition: background-color 0.2s, color 0.2s;
@@ -92,7 +91,6 @@ a {
     display: inline-block;
     background-color: #BAC095;
     border: 2px solid #636B2F;
-    margin-left: 2rem;
     padding: 0.5rem;
     border-radius: 20%;
     color: red;
@@ -109,7 +107,6 @@ a {
     display: inline-block;
     background-color: #BAC095;
     border: 2px solid #636B2F;
-    margin-right: 2rem;
     padding: 0.5rem;
     border-radius: 20%;
     color: red;
@@ -126,7 +123,6 @@ a {
     display: inline-block;
     background-color: #BAC095;
     border: 2px solid #636B2F;
-    margin-right: 2rem;
     padding: 0.5rem;
     border-radius: 20%;
     transition: background-color 0.2s, color 0.2s;
@@ -138,12 +134,26 @@ a {
   color: #BAC095;
 }
 
-#buttonColumn {
+#buttonColumns {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
     gap: 10px;
     align-items: flex-start;
+}
+
+.defaultButtons {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    margin-left: 2rem;
+}
+
+.pageSpecificButtons {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    margin-right: 2rem;
 }
 
 input:focus{

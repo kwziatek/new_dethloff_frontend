@@ -16,6 +16,7 @@ const confirmBtn = document.querySelector("#confirmBtn");
 const fillPageWithStudentData = (data) => {
     document.querySelector("#studentName").value = data.name || "";;
     document.querySelector("#studentSurname").value = data.surname || "";
+    document.querySelector("#studentGender").value = data.gender || "";
     document.querySelector("#studentPESEL").value = data.pesel || "";
     document.querySelector("#studentBirthDate").value = data.birthDate || "";
     document.querySelector("#studentBirthPlace").value = data.placeOfBirth || "";
@@ -61,6 +62,7 @@ const getStudentDataFromPage = () => {
 
         name: getVal("#studentName"),
         surname: getVal("#studentSurname"),
+        gender: getVal("#studentGender"),
         pesel: getVal("#studentPESEL"),
         birthDate: getVal("#studentBirthDate"),
         placeOfBirth: getVal("#studentBirthPlace"),
@@ -111,6 +113,7 @@ const fetchStudentData = async () => {
 const handleEditSaveClick = async () => {
     const editBtn = document.querySelector("#edit");
     const inputs = document.querySelectorAll("input");
+    const dataSelect = document.querySelector("#studentGender");
 
     // Check if we are currently in edit mode
     console.log(editBtn);
@@ -118,6 +121,7 @@ const handleEditSaveClick = async () => {
 
     if(!isEditing) {
         inputs.forEach(input => input.removeAttribute("readonly"));
+        dataSelect.removeAttribute("disabled");
         editBtn.textContent = "Zapisz";
         editBtn.dataset.state = "editing";
     } else {
@@ -127,6 +131,7 @@ const handleEditSaveClick = async () => {
         await api.put("/api/students", getStudentDataFromPage(), auth);
 
         inputs.forEach(input => input.setAttribute("readonly", "true"));
+        dataSelect.setAttribute("disabled", true);
         editBtn.textContent = "Edytuj";
         editBtn.dataset.state = "idle";
     }

@@ -14,8 +14,8 @@
 <body>
     <header>
         <h1> Uczeń </h1>
-        <div id="buttonColumn">
-            <div id="defaultButtons">
+        <div id="buttonColumns">
+            <div id="defaultButtons" class="defaultButtons">
                 <div id="goBack">
                 Powrót
                 </div>
@@ -23,7 +23,7 @@
                     Wyloguj
                 </div>
             </div>
-            <div id="studentSpecificButtons">
+            <div id="studentSpecificButtons" class="pageSpecificButtons">
                 <div id="edit">
                     Edytuj
                 </div>
@@ -38,8 +38,14 @@
             <h2> Dane podstawowe </h2>
             <label for="studentName">Imię:</label>
             <input type="text" id="studentName" value="" readonly/>            
-            <label for="studentSurname">Wziątek:</label>
-            <input type="text" id="studentSurname" value="" readonly/>            
+            <label for="studentSurname">Nazwisko:</label>
+            <input type="text" id="studentSurname" value="" readonly/>
+            <label for="studentGender">Płeć:</label>
+            <select id="studentGender" disabled>
+                <option value="DEFAULT">Domyślna</option>
+                <option value="MALE">Mężczyzna</option>
+                <option value="FEMALE">Kobieta</option>
+            </select>
             <label for="studentPESEL">PESEL:</label>
             <input type="text" id="studentPESEL" value="" readonly/>            
             <label for="studentBirthDate">Data urodzenia:</label>
