@@ -4,27 +4,53 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="shortcut icon" type="image/x-icon" href="../assets/new_shortcut.png" />
+    <link rel="stylesheet" href="/src/css/global.css">
     <link rel="stylesheet" href="/src/css/teachers.css">
     <script src="/src/js/auth-check.js"></script>
     <script type="module" src="/src/js/global.js"></script>
+    <script type="module" src="/src/js/teachers.js"></script>
     <title>Dethloff App</title>
 </head>
 <body>
     <header>
         <h1> Kadra lektorów </h1>
-        <div id="buttonColumn">
-            <div id="goBack">
-            Powrót
+        <div id="buttonColumns">
+            <div class="defaultButtons">
+                <button type="button" id="goBack" class="btn btn-info">
+                    Powrót
+                </button>
+                <button type="button" id="logOut" class="btn btn-danger">
+                    Wyloguj
+                </button>
             </div>
-            <div id="logOut">
-                Wyloguj
+            <div id="teachersPageSpecificButtons" class="pageSpecificButtons">
+                <button type="button" id="addTeacher" class="btn btn-info">
+                    Dodaj lektora
+                </button>
             </div>
         </div>
     </header>
-    <main>
+        <main>
+        <div class="filterBarSection">
+            <input id="filterBar" placeholder="Wyszukaj lektora" autofocus autocomplete="off">
+        </div>
+        <div class="setOfTeachers">
+        </div>
     </main>
     <footer>
 
     </footer>
 </body>
+
+<dialog id="teacherModal">
+    <form method="dialog" id="teacherForm">
+        <h3> Dodawanie lektora </h3>
+        <input name="name" type="text" placeholder="Imię" required autofocus/>
+        <input name="surname" type="text" placeholder="Naziwsko" required/>
+        <input name="pesel" type="text" placeholder="Pesel" required/>
+        <input name="birthDate" type="text" placeholder="Data urodzenia" required/>
+        <button class="save" id="saveTeacher" type="submit"> Zapisz </button>
+        <button class="cancel" id="cancelAddingTeacher" type="button" onclick="teacherModal.close()"> Anuluj </button>
+    </form>
+</dialog>
 </html>

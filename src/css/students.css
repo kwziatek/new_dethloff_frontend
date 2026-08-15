@@ -38,21 +38,6 @@ input {
   color: #BAC095;
 }
 
-#addStudent {
-    display: inline-block;
-    background-color: #BAC095;
-    border: 2px solid #636B2F;
-    margin-left: 2rem;
-    padding: 0.5rem;
-    border-radius: 20%;
-    transition: background-color 0.2s, color 0.2s;
-}
-
-#addStudent:hover {
-  background-color: #3D4127;
-  color: #BAC095;
-}
-
 dialog {
   margin: auto; 
   border: none;
@@ -64,8 +49,4 @@ dialog {
 dialog::backdrop {
     background: rgba(0,0,0,0.5);
     backdrop-filter: blur(2px);
-}
-
-button {
-    margin-top: 1rem;
 }

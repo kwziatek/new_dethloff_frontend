@@ -1,1 +1,52 @@
-@import "/src/css/global.css";
+@import "./global.css";
+
+main {
+    flex-direction: column;
+}
+
+.teacher {
+    border: 2px black solid;
+    margin: 2px;
+}
+
+.setOfTeachers {
+    /* border: 2px red solid; */
+    width: 90vw;
+    display: grid;
+    grid-template-columns: 25% 25% 25% 25%;
+    grid-template-rows: repeat(8, 12,5%);
+    font-size: 1.3rem;
+}
+
+input {
+    display: block;
+    font-size: 3rem;
+    text-decoration: none;
+    background-color: #BAC095;
+    padding: 0.25rem;
+}
+
+.teacher {
+    padding: 0.5rem;
+    background-color: #BAC095;
+    color: #3D4127;
+    transition: background-color 0.2s, color 0.2s;
+}
+
+.teacher:hover {
+  background-color: #3D4127;
+  color: #BAC095;
+}
+
+dialog {
+  margin: auto; 
+  border: none;
+  border-radius: 8px;
+  padding: 2rem;
+  background-color: #636B2F;
+}
+
+dialog::backdrop {
+    background: rgba(0,0,0,0.5);
+    backdrop-filter: blur(2px);
+}

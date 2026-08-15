@@ -1,6 +1,5 @@
 Things to do:
-  - fix the buttons, devide the page into to groups - general and page specific
-    - the idea is to create info and danger buttons classes, create specific styles for them and then just apply on newly created ones
+  - create teacherDetails page
   - apply some styles on alerts and display them after successful and unsuccessful actions
 Things to check out:
   - types of buttons
@@ -48,3 +47,6 @@ done:
     - add a dialog to confirm studen deletion 
     - call the BE API to delete student
     - add gender field
+  - fix the buttons, devide the page into to groups - general and page specific
+    - the idea is to create info and danger buttons classes, create specific styles for them and then just apply on newly created ones
+  - create teachers page
