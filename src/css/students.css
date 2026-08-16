@@ -4,17 +4,11 @@ main {
     flex-direction: column;
 }
 
-.student {
-    border: 2px black solid;
-    margin: 2px;
-}
-
-.setOfStudents {
+#setOfStudents {
     /* border: 2px red solid; */
     width: 90vw;
     display: grid;
-    grid-template-columns: 25% 25% 25% 25%;
-    grid-template-rows: repeat(8, 12,5%);
+    grid-template-columns: repeat(4, 1fr);
     font-size: 1.3rem;
 }
 
@@ -27,6 +21,8 @@ input {
 }
 
 .student {
+    border: 2px black solid;
+    margin: 2px;
     padding: 0.5rem;
     background-color: #BAC095;
     color: #3D4127;

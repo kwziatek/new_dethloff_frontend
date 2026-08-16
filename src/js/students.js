@@ -3,7 +3,7 @@ import axios from "axios";
 const API_URL = import.meta.env.VITE_API_URL;
 const api = axios.create({baseURL: API_URL});
 
-const listOfStudentsSpace = document.querySelector(".setOfStudents");
+const listOfStudentsSpace = document.querySelector("#setOfStudents");
 const filterBar = document.querySelector("#filterBar");
 const availableSpace = 32;
 const modal = document.getElementById("studentModal");
