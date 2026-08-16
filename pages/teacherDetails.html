@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" type="image/x-icon" href="../assets/new_shortcut.png" />
+    <link rel="stylesheet" href="/src/css/global.css">
+    <link rel="stylesheet" href="/src/css/teacherDetails.css">
+    <script src="/src/js/auth-check.js"></script>
+    <script type="module" src="/src/js/global.js"></script>
+    <script type="module" src="/src/js/teacherDetails.js"></script>
+    <title>Dethloff App</title>
+</head>
+<body>
+    <header>
+        <h1> Uczeń </h1>
+        <div id="buttonColumns">
+            <div class="defaultButtons">
+                <button type="button" id="goBack" class="btn btn-info">
+                    Powrót
+                </button>
+                <button type="button" id="logOut" class="btn btn-danger">
+                    Wyloguj
+                </button>
+            </div>
+            <div id="teacherSpecificButtons" class="pageSpecificButtons">
+                <button type="button" id="edit" class="btn btn-warning">
+                    Edytuj
+                </button>
+                <button type="button" id="delete" class="btn btn-danger">
+                    Usuń lektora
+                </button>
+            </div>
+        </div>
+    </header>
+    <main>
+        <section id="basicData">
+            <h2> Dane podstawowe </h2>
+            <label for="teacherName">Imię:</label>
+            <input type="text" id="teacherName" value="" readonly/>            
+            <label for="teacherSurname">Nazwisko:</label>
+            <input type="text" id="teacherSurname" value="" readonly/>
+            <label for="teacherGender">Płeć:</label>
+            <select id="teacherGender" disabled>
+                <option value="DEFAULT">Domyślna</option>
+                <option value="MALE">Mężczyzna</option>
+                <option value="FEMALE">Kobieta</option>
+            </select>
+            <label for="teacherPESEL">PESEL:</label>
+            <input type="text" id="teacherPESEL" value="" readonly/>            
+            <label for="teacherBirthDate">Data urodzenia:</label>
+            <input type="text" id="teacherBirthDate" value="" readonly/>            
+            <label for="teacherBirthPlace">Miejsce urodzenia:</label>
+            <input type="text" id="teacherBirthPlace" value="" readonly/>            
+
+        </section>
+        <section id="contactData">
+            <h2> Dane kontatkowe </h2>  
+            <label for="teacherCity">Miasto:</label>
+            <input type="text" id="teacherCity" value="" readonly/>            
+            <label for="teacherStreet">Ulica:</label>
+            <input type="text" id="teacherStreet" value="" readonly/>            
+            <label for="teacherBuildingNumber">Nr. domu/lokalu:</label>
+            <input type="text" id="teacherBuildingNumber" value="" readonly/>            
+            <label for="teacherPostcode">Kod pocztowy:</label>
+            <input type="text" id="teacherPostcode" value="" readonly/>            
+            <label for="teacherPhoneNumber">Nr. telefonu:</label>
+            <input type="text" id="teacherPhoneNumber" value="" readonly/>  
+            <label for="teacherEmail">Email:</label>
+            <input type="text" id="teacherEmail" value="" readonly/>  
+        </section>
+        <section id="companyData"> 
+            <h2> Dane firmy </h2>
+            <label for="teacherCompanyName">Nazwa:</label>
+            <input type="text" id="teacherCompanyName" value="" readonly/>            
+            <label for="teacherNIP">NIP:</label>
+            <input type="text" id="teacherNIP" value="" readonly/>    
+            <label for="teacherCompanyPhoneNumber">Nr. telefonu:</label>
+            <input type="text" id="teacherCompanyPhoneNumber" value="" readonly/>   
+            <label for="teacherCompanyEmail">Email:</label>
+            <input type="text" id="teacherCompanyEmail" value="" readonly/>
+            <label for="teacherCompanyCity">Miasto:</label>
+            <input type="text" id="teacherCompanyCity" value="" readonly/>            
+            <label for="teacherCompanyStreet">Ulica:</label>
+            <input type="text" id="teacherCompanyStreet" value="" readonly/>            
+            <label for="teacherCompanyBuildingNumber">Nr. domu/lokalu:</label>
+            <input type="text" id="teacherCompanyBuildingNumber" value="" readonly/>            
+            <label for="teacherCompanyPostcode">Kod pocztowy:</label>
+            <input type="text" id="teacherCompanyPostcode" value="" readonly/> 
+        </section>
+        <section id="marketingData">
+            <h2> Dane marketingowe </h2>
+            <label for="teacherSource">Źródło pozyskania:</label>
+            <input type="text" id="teacherSource" value="" readonly/>            
+            <label for="teacherJoiningYear">Rok dołączenia:</label>
+            <input type="text" id="teacherJoiningDate" value="" readonly/>       
+        </section>
+    </main>
+    <footer>
+
+    </footer>
+</body>
+<dialog id="deleteModal">
+  <h2>Czy na pewno chcesz usunąć lektora?</h2>
+  <p>Ta akcja jest nieodwracalna. Dane teachera zostaną trwale usunięte.</p>
+  
+  <div class="modal-actions">
+    <button id="cancelBtn" type="button">Anuluj</button>
+    <button id="confirmBtn" type="button" class="btn-danger">Usuń</button>
+  </div>
+</dialog>
+</html>

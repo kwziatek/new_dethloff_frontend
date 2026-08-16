@@ -1,0 +1,37 @@
+input:read-only {
+    border:none;
+    background: transparent;
+    caret-color: transparent;
+    outline: none;
+}
+
+select:disabled {
+    border:none;
+    background: transparent;
+    caret-color: transparent;
+    outline: none;
+}
+
+main {
+    justify-content: center;
+    align-items: center;
+}
+
+input {
+    padding: 0.25rem;
+}
+
+
+#basicData, #contactData, #companyData, #marketingData {
+    border: 2px black solid;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    padding: 1rem;
+}
+
+h2 {
+    border-bottom: 2px solid black;
+    border-collapse: inherit;
+    padding: 0.8rem;
+}
