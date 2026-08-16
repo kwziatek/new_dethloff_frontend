@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" type="image/x-icon" href="../assets/new_shortcut.png" />
+    <link rel="stylesheet" href="/src/css/courses.css">
+    <script src="/src/js/auth-check.js"></script>
+    <script type="module" src="/src/js/global.js"></script>
+    <script type="module" src="/src/js/courses.js"></script>
+    <title>Dethloff App</title>
+</head>
+<body>
+    <header>
+        <h1> Grupy </h1>
+        <div id="buttonColumns">
+            <div class="defaultButtons">
+                <button type="button" id="goBack" class="btn btn-info">
+                    Powrót
+                </button>
+                <button type="button" id="logOut" class="btn btn-danger">
+                    Wyloguj
+                </button>
+            </div>
+            <div id="?SpecificButtons" class="pageSpecificButtons">
+                <button type="button" id="calendar" class="btn btn-info">
+                    Kalendarz
+                </button>
+                <button type="button" id="createCourse" class="btn btn-info">
+                    Utwórz grupę
+                </button>
+                <button type="button" id="chooseCourseSet" class="btn btn-info">
+                    Wybierz grupe kursów
+                </button>
+            </div>
+        </div>
+    </header>
+    <main>
+        <div id="setOfAllCourses">
+
+        </div>
+    </main>
+    <footer>
+
+    </footer>
+</body>
+
+<dialog id="courseModal">
+    <form method="dialog" id="courseForm">
+        <h3> Tworzenie grupy </h3>
+        <input name="name" type="text" placeholder="nazwa grupy" required autofocus>
+        <button type="sumbit" class="save" id="saveCourse"> Zapisz </button>
+        <button type="button" class="cancel" id="cancelCreatingCourse" type="submit" onclick="courseModal.close()"> Anuluj</button>
+    </form>
+
+</dialog>
+</html>
