@@ -41,6 +41,9 @@ dialog {
   border-radius: 8px;
   padding: 2rem;
   background-color: #636B2F;
+
+  width: min(90vw, 700px);
+  max-width: 90vw;
 }
 
 dialog::backdrop {

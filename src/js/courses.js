@@ -23,7 +23,7 @@ const fetchCourses = async () => {
             const newA = document.createElement("a");
             const newP = document.createElement("p");
             newP.classList.add('course');
-            newP.innerHTML = element.name + "<br>" + element.teacher.name + " " + element.teacher.surname;
+            newP.innerHTML = element.name + " <br>" + element.teacher.name + " " + element.teacher.surname;
             newA.href = "/pages/courseDetails" + "?id=" + element.id;
             newA.classList.add('courseAnchor');
             newA.appendChild(newP);
@@ -40,24 +40,25 @@ const fetchCourses = async () => {
     };
 };
 
-// const enableFilterBar = async () => {
-//     filterBar.addEventListener("input", (e) => {
-//         const userInput = e.target.value.toLowerCase(); 
-//         let matchCount = 0;
+const enableFilterBar = async () => {
+    filterBar.addEventListener("input", (e) => {
+        const userInput = e.target.value.toLowerCase(); 
+        let matchCount = 0;
         
-//         Array.from(listOfStudentsSpace.children).forEach(student => {
-//             const nameSurname = student.querySelector('.student').textContent.toLowerCase();
-//             const isMatch = nameSurname.includes(userInput)
+        Array.from(listOfCoursesSpace.children).forEach(course => {
+            const nameSurname = course.querySelector('.course').textContent.toLowerCase();
+            console.log(nameSurname);
+            const isMatch = nameSurname.includes(userInput)
 
-//             if(isMatch && matchCount < availableSpace) {
-//                 student.style.display = ""; // Restores standard CSS layout
-//                 matchCount++;
-//             } else {
-//                 student.style.display = "none";
-//             }
-//         });
-//     });
-// };
+            if(isMatch && matchCount < availableSpace) {
+                course.style.display = ""; // Restores standard CSS layout
+                matchCount++;
+            } else {
+                course.style.display = "none";
+            }
+        });
+    });
+};
 
 const addCourseButtonAction = async () => {
     document.getElementById("createCourse").addEventListener("click", () => {
@@ -92,7 +93,7 @@ const submitButtonAction = async () => {
 
 const workflow = async () => {
     await fetchCourses();
-    // enableFilterBar();
+    enableFilterBar();
     addCourseButtonAction();
     submitButtonAction();
 };
