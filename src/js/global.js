@@ -13,3 +13,22 @@ if (goBack) {
         window.history.back();
     });
 }
+
+const showToast = (message, type = "success", duration = 3000) => {
+    let toastContainer = document.querySelector("#toast-container");
+    if(!toastContainer) {
+        toastContainer = document.createElement("div");
+        toastContainer.id = "toast-container";
+        document.body.appendChild(toastContainer);
+    } 
+    let toast = document.createElement("div");
+    toast.textContent = message;
+    toast.className =`toast ${type}`;
+    toastContainer.appendChild(toast);
+
+    setTimeout(() => toast.remove(), duration);
+    console.dir(toast);
+}
+
+showToast("próbny tost", "error", 2000);
+

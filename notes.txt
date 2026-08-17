@@ -1,13 +1,12 @@
 Things to do:
   - apply some styles on alerts and display them after successful and unsuccessful actions
-  - fix the add (student/teacher/group) dialog
-  - add some groups to check how the page looks
+  - fix the add (student/teacher/course) dialog
+  
 Things to check out:
   - types of buttons
   - js bubbling (done)
 
 Things to consider next:
-  - how to design the groups page?
   - how to design the management page?
 
 Things to skip:
@@ -47,7 +46,8 @@ done:
     - add a dialog to confirm studen deletion 
     - call the BE API to delete student
     - add gender field
-  - fix the buttons, devide the page into to groups - general and page specific
+  - fix the buttons, devide the page into to courses - general and page specific
     - the idea is to create info and danger buttons classes, create specific styles for them and then just apply on newly created ones
   - create teachers page
   - create teacherDetails page
+  - add some courses to check how the page looks
