@@ -1,4 +1,5 @@
 import axios from "axios";
+import { setRedirectToast, showToast } from "./global";
 
 const API_URL = import.meta.env.VITE_API_URL;
 const api = axios.create({baseURL: API_URL});
@@ -80,6 +81,7 @@ const submitButtonAction = async () => {
         try {
             const response = await api.post("/api/students", payload, auth);
             const data = await response.data;
+            setRedirectToast("Pomyślnie dodano ucznia", "success");
             window.location.href = `/pages/studentDetails?id=${data.id}`;
             modal.close();
         } catch (error) {

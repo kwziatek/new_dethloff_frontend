@@ -1,4 +1,5 @@
 import axios from "axios";
+import { setRedirectToast, showToast } from "./global";
 
 const API_URL = import.meta.env.VITE_API_URL;
 const api = axios.create({baseURL: API_URL});
@@ -109,8 +110,8 @@ const handleEditSaveClick = async () => {
     } else {
         const teacherData = getStudentDataFromPage();
 
-        //TODO: call BE API 
         await api.put("/api/teachers", getStudentDataFromPage(), auth);
+        showToast("Zapisano zmiany", "info");
 
         inputs.forEach(input => input.setAttribute("readonly", "true"));
         dataSelect.setAttribute("disabled", true);
@@ -133,6 +134,7 @@ confirmBtn.addEventListener("click", async () => {
     modal.close();
     try {
         await api.delete(`/api/teachers/${teacherId}`, auth);
+        setRedirectToast("Pomyślnie usunięto lektora", "success");
         window.location.href = "/pages/teachers";
     } catch(error) {
         console.log(error);
