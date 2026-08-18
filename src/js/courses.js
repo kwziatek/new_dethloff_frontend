@@ -32,7 +32,6 @@ const fetchCourses = async () => {
             } else {
                 shownCount++;
             }
-            console.log(listOfCoursesSpace);
             listOfCoursesSpace.append(newA);
         });
     } catch(e) {
@@ -47,7 +46,6 @@ const enableFilterBar = async () => {
         
         Array.from(listOfCoursesSpace.children).forEach(course => {
             const nameSurname = course.querySelector('.course').textContent.toLowerCase();
-            console.log(nameSurname);
             const isMatch = nameSurname.includes(userInput)
 
             if(isMatch && matchCount < availableSpace) {
