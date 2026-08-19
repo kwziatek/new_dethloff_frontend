@@ -161,4 +161,13 @@ dialog::backdrop {
 .toast.error { background-color: #dc3545; }
 .toast.info { background-color: #17a2b8; }
 
+@keyframes slideIn {
+    from { transform: translateY(-20px); opacity: 0;}
+    to { transform: translateY(0); opacity: 1;}
+}
+
+@keyframes fadeOut {
+    to { transform: translateY(-20px); opacity: 0;}
+}
+
 /* toast notification section */

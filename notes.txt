@@ -1,5 +1,4 @@
 Things to do:
-  - beautify the alerts (smoothly appear & disappear, etc.)
   - fix the add (student/teacher/course) dialog
   
 Things to check out:
@@ -52,3 +51,4 @@ done:
   - create teacherDetails page
   - add some courses to check how the page looks
   - apply some styles on alerts and display them after successful and unsuccessful actions
+  - beautify the alerts (smoothly appear & disappear, etc.)
