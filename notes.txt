@@ -1,5 +1,4 @@
 Things to do:
-  - fix the add (student/teacher/course) dialog
   - calendar should wait for course details and lesson details 
   - fix the course.js, wonder how to handle data BE API backend calls, filtering sets of courses and courses
   - wonder how to design the calendar
@@ -55,3 +54,4 @@ done:
   - add some courses to check how the page looks
   - apply some styles on alerts and display them after successful and unsuccessful actions
   - beautify the alerts (smoothly appear & disappear, etc.)
+  - fix the add (student/teacher/course) dialog

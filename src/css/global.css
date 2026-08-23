@@ -99,12 +99,13 @@ input:focus{
 }
 
 dialog {
+  margin: auto; 
   border: none;
-  margin: auto;
   border-radius: 8px;
-  padding: 24px;
-  max-width: 400px;
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+  padding: 2rem;
+  background-color: #636B2F;
+  width: min(90vw, 700px);
+  max-width: 90vw;
 }
 
 dialog::backdrop {
@@ -133,6 +134,16 @@ dialog::backdrop {
 .btn-danger {background-color: #dc3545; color: white;}
 .btn-warning {background-color: #ffc107; color: #213529;}
 .btn-info {background-color: #0dcaf0; color: #212529;}
+
+.btn-dialog {
+    font-size: 1rem;
+    padding: 0.5rem 1rem;
+    border-radius: 6px;
+    border:none;
+    cursor: pointer;
+    font-weight: 500;
+    margin: 1rem 0rem 0rem;
+}
 
 /* button section */
 

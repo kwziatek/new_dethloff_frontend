@@ -1,4 +1,5 @@
 import axios from "axios";
+import { showToast, setRedirectToast } from "./global";
 
 const API_URL = import.meta.env.VITE_API_URL;
 const api = axios.create({baseURL: API_URL});
@@ -26,14 +27,15 @@ const logIn = async (login, password) => {
         const token = response.data
         localStorage.setItem("jwt_token", token);
         if(token) {
+            setRedirectToast("Pomyślnie zalogowano", "success");
             window.location.href = "dashboard";
         } else {
-            alert("Brak tokenu w odpowiedzi servera");
+            showToast("Koniec sesji, zaloguj się ponownie", "info");
         }
 
     } catch(error) {
         console.log(error.message);
         console.error("Błąd logowania: " + error);
-        alert("Logowanie nie powiodło się!");
+        showToast("Logowanie nie powiodło się!", "error");
     }
 };

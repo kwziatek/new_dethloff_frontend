@@ -52,8 +52,10 @@
     <form method="dialog" id="addCourseForm">
         <h3> Tworzenie grupy </h3>
         <input name="name" type="text" placeholder="nazwa grupy" required autofocus>
-        <button type="sumbit" class="save" id="saveCourse"> Zapisz </button>
-        <button type="button" class="cancel" id="cancelCreatingCourse" type="submit" onclick="addCourseModal.close()"> Anuluj</button>
+        <input name="teacher" type="text" placeholder="lektor" required>
+        <input name="level" type="text" placeholder="poziom" required>
+        <button type="sumbit" class="btn-dialog" id="saveCourse"> Zapisz </button>
+        <button type="button" class=" btn-dialog" id="cancelCreatingCourse" type="submit" onclick="addCourseModal.close()"> Anuluj</button>
     </form>
 </dialog>
 
@@ -61,7 +63,7 @@
         <h3> Wyszukaj grupę kursów </h3>
         <input name="groupSearchInput" type="text" placeholder="np. '25/26" required autofocus>
 
-        <ul id="groupList"></ul>
-        <button type="button" id="closeGroupModal">Anuluj</button>
+        <!-- <ul id="groupList"></ul> -->
+        <button type="button" class="btn-dialog" id="closeGroupModal" type="submit" onclick="chooseSetOfCoursesModal.close()">Anuluj</button>
 </dialog>
 </html>
