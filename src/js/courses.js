@@ -6,8 +6,13 @@ const api = axios.create({baseURL: API_URL});
 const listOfCoursesSpace = document.querySelector("#setOfAllCourses");
 // const filterBar = document.querySelector("#filterBar");
 const availableSpace = 32;
-const modal = document.getElementById("courseModal");
-const form = document.getElementById("courseForm");
+const addCourseModal = document.getElementById("addCourseModal");
+const addCourseForm = document.getElementById("addCourseForm");
+const chooseSetOfCoursesModal = document.getElementById("chooseSetOfCoursesModal");
+const chooseSetOfCoursesForm = document.getElementById("chooseSetOfCoursesForm");
+
+let allCourses = [];
+let allSetsOfCourses = [];
 
 const fetchCourses = async () => {
     try {
@@ -16,10 +21,17 @@ const fetchCourses = async () => {
                 Authorization: `Bearer ${localStorage.getItem('jwt_token')}`
             }
         }
-        const response = await api.get('/api/courses', auth);
-        const data = response.data;
+        const [coursesRes, setsRes] = await Promise.all([
+            api.get('/api/courses', auth),
+            api.get('/api/courses/setsOfCourses', auth)
+        ]);
+
+        allCourses = coursesRes.data;
+        allSetsOfCourses = setsRes.data;
+
+
         let shownCount = 0;
-        data.forEach(element => {
+        allCourses.forEach(element => {
             const newA = document.createElement("a");
             const newP = document.createElement("p");
             newP.classList.add('course');
@@ -60,16 +72,28 @@ const enableFilterBar = async () => {
 
 const addCourseButtonAction = async () => {
     document.getElementById("createCourse").addEventListener("click", () => {
-        form.reset();
-        modal.showModal();
+        addCourseForm.reset();
+        addCourseModal.showModal();
+    });
+}
+
+const calendarButtonAction = async () => {
+    document.getElementById("calendar").addEventListener("click", () => {
+
+    });
+}
+
+const chooseSetOfCoursesAction = async () => {
+    document.getElementById("chooseCourseSet").addEventListener("click", () => {
+        chooseSetOfCoursesModal.showModal();
     });
 }
 
 const submitButtonAction = async () => {
-    form.addEventListener("submit", async (e) => {
+    addCourseForm.addEventListener("submit", async (e) => {
         // e.preventDefault();
 
-        const formData = new FormData(form);
+        const formData = new FormData(addCourseForm);
         const payload = Object.fromEntries(formData);
 
         const auth = {
@@ -81,7 +105,7 @@ const submitButtonAction = async () => {
             const response = await api.post("/api/courses", payload, auth);
             const data = await response.data;
             window.location.href = `/pages/courseDetails?id=${data.id}`;
-            modal.close();
+            addCourseModal.close();
         } catch (error) {
             console.error("Failed to add course: ", error);
         }
@@ -92,6 +116,7 @@ const submitButtonAction = async () => {
 const workflow = async () => {
     await fetchCourses();
     enableFilterBar();
+    chooseSetOfCoursesAction();
     addCourseButtonAction();
     submitButtonAction();
 };
