@@ -84,6 +84,20 @@ const addCreateCourseButtonAction = () => {
     createCourseButton.addEventListener("click", () => {
         const modal = document.querySelector("#addCourseModal");
         modal.showModal();
+
+        const teacherInput = document.querySelector("#teacherSearchInput");
+        const teacherDropdown = document.querySelector("#teacherDropdown")
+        teacherInput.addEventListener("input", (e) => {
+            const query = e.target.value.toLowerCase().trim();
+
+            if(!query || query.length === 0) {
+                teacherDropdown.style.display = "none";
+            } else {
+                teacherDropdown.style.display = "block";
+            }
+
+            
+        })
     });
     
 }

@@ -7,7 +7,7 @@
     <link rel="stylesheet" href="/src/css/courses.css">
     <script src="/src/js/auth-check.js"></script>
     <script type="module" src="/src/js/global.js"></script>
-    <script type="module" src="/src/js/courses.js"></script>
+    <script type="module" src="/src/js/new_courses.js"></script>
     <title>Dethloff App</title>
 </head>
 <body>
@@ -51,8 +51,13 @@
 <dialog id="addCourseModal">
     <form method="dialog" id="addCourseForm">
         <h3> Tworzenie grupy </h3>
-        <input name="name" type="text" placeholder="nazwa grupy" required autofocus>
-        <input name="teacher" type="text" placeholder="lektor" required>
+        <input id="courseName" type="text" placeholder="nazwa grupy" required autofocus>
+        <input id="teacherSearchInput" type="text" placeholder="lektor" required>
+        <ul id="teacherDropdown" class="dropdown-list">
+            <li> <p>Tomasz Wziątek</p></li>
+            <li> <p>Anna Sochal</p></li>
+            <li> <p>Marian Zlazły</p></li>
+        </ul>
         <input name="level" type="text" placeholder="poziom" required>
         <button type="sumbit" class="btn-dialog" id="saveCourse"> Zapisz </button>
         <button type="button" class=" btn-dialog" id="cancelCreatingCourse" type="submit" onclick="addCourseModal.close()"> Anuluj</button>

@@ -94,6 +94,10 @@ a {
     margin-right: 2rem;
 }
 
+input {
+    font-size: 1rem;
+}
+
 input:focus{
     outline: 3px #3D4127 solid;
 }
@@ -182,3 +186,35 @@ dialog::backdrop {
 }
 
 /* toast notification section */
+
+/* dropdown-list section */
+
+.dropdown-list {
+    position: absolute;
+    display: none;
+    list-style-type: none;
+    
+}
+
+.dropdown-list li {
+    border-right: 1px solid black;
+    border-left: 1px solid black;
+    border-bottom: 1px solid black;
+    border-color: black;
+}
+
+.dropdown-list li:first-child {
+    border-top: 1px solid black;
+}
+
+
+.dropdown-list p {
+    background-color: white;
+    font-size: 1.5rem;
+}
+
+.dropdown-list p:hover {
+    background-color: grey;
+}
+
+/* dropdown-list section */
