@@ -3,7 +3,7 @@ I use node.js to make the coding easier with following tools:
  - npm
  - vite
 
-There is nothing special in particular in this project - feel free to skip the rest of this file. I'll just store some additional info about it, it might be helpful in terms of development purposes.
+There is nothing special in particular about this project - feel free to skip the rest of this file. I'll just store some additional info about it, it might be helpful in terms of development purposes.
 
 Technical data:
 
