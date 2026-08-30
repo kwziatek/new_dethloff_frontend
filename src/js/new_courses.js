@@ -21,11 +21,25 @@ const auth = {
 
 const availableSpace = 32;
 const listOfCoursesSpace =  document.querySelector("#setOfAllCourses");
+const teacherInput = document.querySelector("#teacherSearchInput");
+const teacherDropdown = document.querySelector("#teacherDropdown");
 
 let allCourses = [];
 let allSetsOfCourses = [];
 let allTeachers = [];
 let allLevels = [];
+
+const createTeacherDropdownListElements = () => {
+    allTeachers.forEach(teacher => {
+        const newP = document.createElement("p");
+        newP = innerHTML = teacher.name + " " + teacher.surname;
+        const newLI = document.createElement("li");
+        newLI.classList.add = "teacherLI";
+        newLI.display.style = "none";
+        newLI.appendChild(newP);
+        teacherDropdown.appendChild(newLI);
+    })
+}
 
 const fetchCourses = async () => {
     try {
@@ -38,6 +52,7 @@ const fetchCourses = async () => {
         showToast("Nie udało się pobrać danych", "error");
         console.log(error);
     }
+    createTeacherDropdownListElements();
 }
 
 const enableFilterBar = () => {
@@ -85,8 +100,6 @@ const addCreateCourseButtonAction = () => {
         const modal = document.querySelector("#addCourseModal");
         modal.showModal();
 
-        const teacherInput = document.querySelector("#teacherSearchInput");
-        const teacherDropdown = document.querySelector("#teacherDropdown")
         teacherInput.addEventListener("input", (e) => {
             const query = e.target.value.toLowerCase().trim();
 
@@ -96,8 +109,16 @@ const addCreateCourseButtonAction = () => {
                 teacherDropdown.style.display = "block";
             }
 
-            
-        })
+            const teacherLIs = document.querySelectorAll(".teacherLI");
+            teacherLIs.forEach(teacherLI => {
+                const isMatch = teacherLI.textContent.includes(query);
+                if(isMatch) {
+                    teacherLI.style.display = "";
+                } else {
+                    teacher.style.display = "none";
+                }
+            });
+        });
     });
     
 }
