@@ -37,7 +37,7 @@
     </header>
     <main>
         <div class="filterBarSection">
-            <input id="filterBar" placeholder="Wyszukaj krus" autofocus autocomplete="off">
+            <input id="filterBar" placeholder="Wyszukaj kurs" autofocus autocomplete="off">
         </div>
         <div id="setOfAllCourses">
 
@@ -54,10 +54,8 @@
         <input id="courseName" type="text" placeholder="nazwa grupy" required autofocus>
         <input id="teacherSearchInput" type="text" placeholder="lektor" required>
         <ul id="teacherDropdown" class="dropdown-list">
-            <li> <p>Tomasz Wziątek</p></li>
-            <li> <p>Anna Sochal</p></li>
-            <li> <p>Marian Zlazły</p></li>
         </ul>
+        <input id="chosenTeacherId" type="hidden">
         <input name="level" type="text" placeholder="poziom" required>
         <button type="sumbit" class="btn-dialog" id="saveCourse"> Zapisz </button>
         <button type="button" class=" btn-dialog" id="cancelCreatingCourse" type="submit" onclick="addCourseModal.close()"> Anuluj</button>

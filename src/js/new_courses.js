@@ -23,6 +23,7 @@ const availableSpace = 32;
 const listOfCoursesSpace =  document.querySelector("#setOfAllCourses");
 const teacherInput = document.querySelector("#teacherSearchInput");
 const teacherDropdown = document.querySelector("#teacherDropdown");
+const hiddenTeacherIdInput = document.querySelector("#chosenTeacherId");
 
 let allCourses = [];
 let allSetsOfCourses = [];
@@ -32,10 +33,12 @@ let allLevels = [];
 const createTeacherDropdownListElements = () => {
     allTeachers.forEach(teacher => {
         const newP = document.createElement("p");
-        newP = innerHTML = teacher.name + " " + teacher.surname;
+        newP.innerHTML = teacher.name + " " + teacher.surname;
+        newP.dataset.teacherId = teacher.id;
         const newLI = document.createElement("li");
         newLI.classList.add = "teacherLI";
-        newLI.display.style = "none";
+        newLI.style.display = "none";
+        // teacher is needs to be stored in LI or P element
         newLI.appendChild(newP);
         teacherDropdown.appendChild(newLI);
     })
@@ -109,15 +112,22 @@ const addCreateCourseButtonAction = () => {
                 teacherDropdown.style.display = "block";
             }
 
-            const teacherLIs = document.querySelectorAll(".teacherLI");
-            teacherLIs.forEach(teacherLI => {
-                const isMatch = teacherLI.textContent.includes(query);
+            Array.from(teacherDropdown.children).forEach(teacherLI => {
+                const isMatch = teacherLI.textContent.toLocaleLowerCase().trim().includes(query);
                 if(isMatch) {
                     teacherLI.style.display = "";
                 } else {
-                    teacher.style.display = "none";
+                    teacherLI.style.display = "none";
                 }
+                
             });
+        });
+        teacherDropdown.addEventListener("click", (e) => {
+            const chosenTeacher = e.target.textContent;
+            teacherInput.value = chosenTeacher;
+            teacherDropdown.style.display = "none";
+            hiddenTeacherIdInput.value = e.target.dataset.teacherId;
+            console.log(hiddenTeacherIdInput.value);
         });
     });
     

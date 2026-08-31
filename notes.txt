@@ -1,25 +1,19 @@
-Things to do:
-  - calendar should wait for course details and lesson details 
-  - fix the course.js, wonder how to handle data BE API backend calls, filtering sets of courses and courses
-  - wonder how to design the calendar
-  
-Things to check out:
-  - types of buttons
-  - js bubbling (done)
+What's next?
+  - force user to click a list element (teacher) when creating course.
+  It's vital, because otherwise teacherId is not saved and BE call in invalid. 
+  An idea would be to delete everything in teacher input unless user clicks one of list elements.
+  Notice that clicking one of the list elements is the only way to have non-empty teacher input. 
+  Combined with teacher input field being required to sumbit, it almost prevents user from providing invalid teacher input.
+  The only exception is when users types something and clicks "zapisz" immediately with course name and level already filled out.
 
-Things to consider next:
-  - how to design the management page?
+Things to do:
+  - fix the course.js, wonder how to handle data BE API backend calls, filtering sets of courses and courses
+  - wonder how to design the calendar (need to wait for course and course details page)
+  - wonder what functionalities should the management page have?
 
 Things to skip:
   - about school page 
   - contact page
-
-file .env (must be in .gitignore)
-  keep secrets 
-    vite_server_url = address (http://localhost:8080/)
-
-    the idea is to keep the ip adress as a global var and use it across the app
-
 
 
 done: 
@@ -55,3 +49,8 @@ done:
   - apply some styles on alerts and display them after successful and unsuccessful actions
   - beautify the alerts (smoothly appear & disappear, etc.)
   - fix the add (student/teacher/course) dialog
+
+  - courses page
+    - create page specific buttons
+    - fetch course data 
+    - display default page content - courses panels
