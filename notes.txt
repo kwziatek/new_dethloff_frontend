@@ -6,6 +6,10 @@ What's next?
   Combined with teacher input field being required to sumbit, it almost prevents user from providing invalid teacher input.
   The only exception is when users types something and clicks "zapisz" immediately with course name and level already filled out.
 
+  The idea above is great with following mechanism does the job.
+  The "zapisz" submit button is disabled unless (hidden)teacherId and (hidden)levelId are filled with values.
+  In such case it's certain BE gets valid course and level IDs and it's easy for the user to understand that they have to click on a list element otherwise the teacher (the same thing for level) the provide won't be saved.
+
 Things to do:
   - fix the course.js, wonder how to handle data BE API backend calls, filtering sets of courses and courses
   - wonder how to design the calendar (need to wait for course and course details page)
