@@ -1,14 +1,6 @@
 What's next?
-  
-  It's vital, because otherwise teacherId is not saved and BE call in invalid. 
-  An idea would be to delete everything in teacher input unless user clicks one of list elements.
-  Notice that clicking one of the list elements is the only way to have non-empty teacher input. 
-  Combined with teacher input field being required to sumbit, it almost prevents user from providing invalid teacher input.
-  The only exception is when users types something and clicks "zapisz" immediately with course name and level already filled out.
-
-  The idea above is great with following mechanism does the job.
-  The "zapisz" submit button is disabled unless (hidden)teacherId and (hidden)levelId are filled with values.
-  In such case it's certain BE gets valid course and level IDs and it's easy for the user to understand that they have to click on a list element otherwise the teacher (the same thing for level) the provide won't be saved.
+  create datalist (or just list) for course levels, they options are fixed: A1, A2,..., C2.
+  it will be silimar to teacher input, but way easier, no data to be fetched from BE and no id storing, just plain text
 
 Things to do:
   - fix the course.js, wonder how to handle data BE API backend calls, filtering sets of courses and courses
