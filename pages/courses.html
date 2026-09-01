@@ -51,12 +51,12 @@
 <dialog id="addCourseModal">
     <form method="dialog" id="addCourseForm">
         <h3> Tworzenie grupy </h3>
-        <input id="courseName" type="text" placeholder="nazwa grupy" required autofocus>
-        <input id="teacherSearchInput" type="text" placeholder="lektor" required>
+        <input id="courseNameInput" type="text" placeholder="nazwa grupy" autocomplete="off" autofocus>
+        <input id="teacherSearchInput" type="text" placeholder="lektor" autocomplete="off">
         <ul id="teacherDropdown" class="dropdown-list">
         </ul>
         <input id="chosenTeacherId" type="hidden">
-        <input name="level" type="text" placeholder="poziom" required>
+        <input id="levelSearchInput" type="text" placeholder="poziom" autocomplete="off">
         <button type="sumbit" class="btn-dialog" id="saveCourse"> Zapisz </button>
         <button type="button" class=" btn-dialog" id="cancelCreatingCourse" type="submit" onclick="addCourseModal.close()"> Anuluj</button>
     </form>

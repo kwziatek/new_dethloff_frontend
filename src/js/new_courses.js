@@ -21,9 +21,12 @@ const auth = {
 
 const availableSpace = 32;
 const listOfCoursesSpace =  document.querySelector("#setOfAllCourses");
+
+const courseNameInput = document.querySelector("#courseNameInput");
 const teacherInput = document.querySelector("#teacherSearchInput");
 const teacherDropdown = document.querySelector("#teacherDropdown");
 const hiddenTeacherIdInput = document.querySelector("#chosenTeacherId");
+const levelInput = document.querySelector("#levelSearchInput");
 
 let allCourses = [];
 let allSetsOfCourses = [];
@@ -97,13 +100,43 @@ const displayDefaultPageContent = () => {
     enableFilterBar();
 }
 
+const addSubmitFormAction = (modal) => {
+    const form = document.querySelector("#addCourseForm");
+    form.addEventListener("submit", (e) => {
+        e.preventDefault();
+
+        if(!courseNameInput.value) {
+            courseNameInput.setCustomValidity("Wpisz nazwę kursu!");
+            levelInput.reportValidity();
+        } else if(!teacherInput.value) {
+            teacherInput.setCustomValidity("Wybierz lektora z listy!");
+            levelInput.reportValidity();
+        } else if(!levelInput.value) {
+            levelInput.setCustomValidity("Wybierz poziom kursu z listy!");
+            levelInput.reportValidity();
+        } else {
+            // BE API call
+            modal.close();
+        }
+    });
+}
+
 const addCreateCourseButtonAction = () => {
     const createCourseButton = document.querySelector("#createCourse");
+    const modal = document.querySelector("#addCourseModal");
     createCourseButton.addEventListener("click", () => {
-        const modal = document.querySelector("#addCourseModal");
         modal.showModal();
 
+        // *name section* //
+        courseNameInput.addEventListener("input", (e) => {
+            e.target.setCustomValidity("");
+        })
+        // *name section* //
+
+        // *teacher section* //
         teacherInput.addEventListener("input", (e) => {
+            hiddenTeacherIdInput.value = "";
+            e.target.setCustomValidity("");
             const query = e.target.value.toLowerCase().trim();
 
             if(!query || query.length === 0) {
@@ -122,15 +155,28 @@ const addCreateCourseButtonAction = () => {
                 
             });
         });
-        teacherDropdown.addEventListener("click", (e) => {
+        teacherDropdown.addEventListener("mousedown", (e) => {
             const chosenTeacher = e.target.textContent;
             teacherInput.value = chosenTeacher;
             teacherDropdown.style.display = "none";
             hiddenTeacherIdInput.value = e.target.dataset.teacherId;
-            console.log(hiddenTeacherIdInput.value);
         });
+
+        teacherInput.addEventListener("blur", () => {
+            if(hiddenTeacherIdInput.value === "") {
+                teacherInput.value = "";
+                teacherDropdown.style.display = "none";
+            }
+        });
+        // *teacher section* //
+
+        // *level section* //
+        levelInput.addEventListener("input", (e) => {
+            e.target.setCustomValidity("");
+        })
+        // *level section* //
     });
-    
+    addSubmitFormAction(modal);
 }
 
 const addPageSpecificButtonsEventListeners = () => {

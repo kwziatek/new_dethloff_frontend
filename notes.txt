@@ -1,5 +1,5 @@
 What's next?
-  - force user to click a list element (teacher) when creating course.
+  
   It's vital, because otherwise teacherId is not saved and BE call in invalid. 
   An idea would be to delete everything in teacher input unless user clicks one of list elements.
   Notice that clicking one of the list elements is the only way to have non-empty teacher input. 
@@ -58,3 +58,6 @@ done:
     - create page specific buttons
     - fetch course data 
     - display default page content - courses panels
+    - add course dialog
+      - force user to click a teacher from dropdown (the input is deleted otherwise)
+      - display custom error messages for trying to submit for all the input fields
