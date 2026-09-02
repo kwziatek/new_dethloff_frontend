@@ -1,57 +1,65 @@
+// fetch the data from BE API:
+// 1. all courses (may be detailed) data
+// 2. all levels of courses
+// 3. all teachers
+// 4. all sets of courses
+
+// create course button 
+// 1. store course name
+// 2. enable search bar tool, searching among the fetched teachers
+// 3. the same with level of courses
 import axios from "axios";
+import {setRedirectToast, showToast} from "./global";
 
 const API_URL = import.meta.env.VITE_API_URL;
 const api = axios.create({baseURL: API_URL});
+const auth = {
+    headers: {
+        Authorization: `Bearer ${localStorage.getItem('jwt_token')}`
+    }
+};
 
-const listOfCoursesSpace = document.querySelector("#setOfAllCourses");
-// const filterBar = document.querySelector("#filterBar");
 const availableSpace = 32;
-const addCourseModal = document.getElementById("addCourseModal");
-const addCourseForm = document.getElementById("addCourseForm");
-const chooseSetOfCoursesModal = document.getElementById("chooseSetOfCoursesModal");
-const chooseSetOfCoursesForm = document.getElementById("chooseSetOfCoursesForm");
+const listOfCoursesSpace =  document.querySelector("#setOfAllCourses");
+
+const courseNameInput = document.querySelector("#courseNameInput");
+const teacherInput = document.querySelector("#teacherSearchInput");
+const teacherDropdown = document.querySelector("#teacherDropdown");
+const hiddenTeacherIdInput = document.querySelector("#chosenTeacherId");
+const levelInput = document.querySelector("#levelSearchInput");
 
 let allCourses = [];
 let allSetsOfCourses = [];
+let allTeachers = [];
+
+const createTeacherDropdownListElements = () => {
+    allTeachers.forEach(teacher => {
+        const newP = document.createElement("p");
+        newP.innerHTML = teacher.name + " " + teacher.surname;
+        newP.dataset.teacherId = teacher.id;
+        const newLI = document.createElement("li");
+        newLI.classList.add = "teacherLI";
+        newLI.style.display = "none";
+        // teacher is needs to be stored in LI or P element
+        newLI.appendChild(newP);
+        teacherDropdown.appendChild(newLI);
+    })
+}
 
 const fetchCourses = async () => {
     try {
-        const auth = {
-            headers: {
-                Authorization: `Bearer ${localStorage.getItem('jwt_token')}`
-            }
-        }
-        const [coursesRes, setsRes] = await Promise.all([
-            api.get('/api/courses', auth),
-            api.get('/api/courses/setsOfCourses', auth)
-        ]);
+        allCourses = (await api.get("/api/courses", auth)).data;
+        allSetsOfCourses = (await api.get("/api/courses/setsOfCourses", auth)).data;
+        allTeachers = (await api.get("/api/teachers", auth)).data;
 
-        allCourses = coursesRes.data;
-        allSetsOfCourses = setsRes.data;
+    } catch (error) {
+        showToast("Nie udało się pobrać danych", "error");
+        console.log(error);
+    }
+    createTeacherDropdownListElements();
+}
 
-
-        let shownCount = 0;
-        allCourses.forEach(element => {
-            const newA = document.createElement("a");
-            const newP = document.createElement("p");
-            newP.classList.add('course');
-            newP.innerHTML = element.name + " <br>" + element.teacher.name + " " + element.teacher.surname;
-            newA.href = "/pages/courseDetails" + "?id=" + element.id;
-            newA.classList.add('courseAnchor');
-            newA.appendChild(newP);
-            if(shownCount >= availableSpace) {
-                newA.style.display = "none";
-            } else {
-                shownCount++;
-            }
-            listOfCoursesSpace.append(newA);
-        });
-    } catch(e) {
-        alert(e.message);
-    };
-};
-
-const enableFilterBar = async () => {
+const enableFilterBar = () => {
     filterBar.addEventListener("input", (e) => {
         const userInput = e.target.value.toLowerCase(); 
         let matchCount = 0;
@@ -70,55 +78,135 @@ const enableFilterBar = async () => {
     });
 };
 
-const addCourseButtonAction = async () => {
-    document.getElementById("createCourse").addEventListener("click", () => {
-        addCourseForm.reset();
-        addCourseModal.showModal();
-    });
-}
-
-const calendarButtonAction = async () => {
-    document.getElementById("calendar").addEventListener("click", () => {
-
-    });
-}
-
-const chooseSetOfCoursesAction = async () => {
-    document.getElementById("chooseCourseSet").addEventListener("click", () => {
-        chooseSetOfCoursesModal.showModal();
-    });
-}
-
-const submitButtonAction = async () => {
-    addCourseForm.addEventListener("submit", async (e) => {
-        // e.preventDefault();
-
-        const formData = new FormData(addCourseForm);
-        const payload = Object.fromEntries(formData);
-
-        const auth = {
-            headers: {
-                Authorization: `Bearer ${localStorage.getItem("jwt_token")}`
-            }
-        };
-        try {
-            const response = await api.post("/api/courses", payload, auth);
-            const data = await response.data;
-            window.location.href = `/pages/courseDetails?id=${data.id}`;
-            addCourseModal.close();
-        } catch (error) {
-            console.error("Failed to add course: ", error);
+const displayDefaultPageContent = () => {
+    let shownCount = 0;
+    allCourses.forEach(element => {
+        const newA = document.createElement("a");
+        const newP = document.createElement("p");
+        newP.classList.add('course');
+        newP.innerHTML = element.name + " <br>" + element.teacher.name + " " + element.teacher.surname;
+        newA.href = "/pages/courseDetails" + "?id=" + element.id;
+        newA.classList.add('courseAnchor');
+        newA.appendChild(newP);
+        if(shownCount >= availableSpace) {
+            newA.style.display = "none";
+        } else {
+            shownCount++;
         }
-        
+        listOfCoursesSpace.append(newA);
     });
+    enableFilterBar();
+}
+
+const addSubmitFormAction = (modal) => {
+    const form = document.querySelector("#addCourseForm");
+    const validLevels = Array.from(document.querySelectorAll("#levelsList option")).map(validLevel => validLevel.value);
+
+    form.addEventListener("submit", async (e) => {
+        e.preventDefault();
+
+        if(!courseNameInput.value) {
+            courseNameInput.setCustomValidity("Wpisz nazwę kursu!");
+            courseNameInput.reportValidity();
+        } else if(!teacherInput.value) {
+            teacherInput.setCustomValidity("Wybierz lektora z listy!");
+            teacherInput.reportValidity();
+        } else if(!validLevels.includes(levelInput.value)) {
+            levelInput.setCustomValidity("Wybierz poziom kursu z listy!");
+            levelInput.reportValidity();
+        } else {
+            // create json - BE API payload
+            const newCourse = {
+                name: courseNameInput.value,
+                teacherId: hiddenTeacherIdInput.value,
+                level: levelInput.value
+            }
+            form.reset();
+            // call BE API 
+            try {
+                const responseData = await (await api.post("/api/courses", newCourse, auth)).data;
+                console.log(responseData);
+                setRedirectToast("Pomyślnie utworzono kurs", "success");
+                // window.location.href = `/coursedetails?id=${responseData.id}`;
+                modal.close();
+            } catch(error) {
+                modal.close();
+                showToast("Błąd serwera, nie utworzono kursu", "error");
+                console.log(error);
+            }
+            
+        }
+    });
+}
+
+const addCreateCourseButtonAction = () => {
+    const createCourseButton = document.querySelector("#createCourse");
+    const modal = document.querySelector("#addCourseModal");
+    createCourseButton.addEventListener("click", () => {
+        modal.showModal();
+
+        // *name section* //
+        courseNameInput.addEventListener("input", (e) => {
+            e.target.setCustomValidity("");
+        })
+        // *name section* //
+
+        // *teacher section* //
+        teacherInput.addEventListener("input", (e) => {
+            hiddenTeacherIdInput.value = "";
+            e.target.setCustomValidity("");
+            const query = e.target.value.toLowerCase().trim();
+
+            if(!query || query.length === 0) {
+                teacherDropdown.style.display = "none";
+            } else {
+                teacherDropdown.style.display = "block";
+            }
+
+            Array.from(teacherDropdown.children).forEach(teacherLI => {
+                const isMatch = teacherLI.textContent.toLocaleLowerCase().trim().includes(query);
+                if(isMatch) {
+                    teacherLI.style.display = "";
+                } else {
+                    teacherLI.style.display = "none";
+                }
+                
+            });
+        });
+        teacherDropdown.addEventListener("mousedown", (e) => {
+            const chosenTeacher = e.target.textContent;
+            teacherInput.value = chosenTeacher;
+            teacherDropdown.style.display = "none";
+            hiddenTeacherIdInput.value = e.target.dataset.teacherId;
+        });
+
+        teacherInput.addEventListener("blur", () => {
+            if(hiddenTeacherIdInput.value === "") {
+                teacherInput.value = "";
+                teacherDropdown.style.display = "none";
+            }
+        });
+        // *teacher section* //
+
+        // *level section* //
+        levelInput.addEventListener("input", (e) => {
+            e.target.setCustomValidity("");
+        })
+        // *level section* //
+    });
+    addSubmitFormAction(modal);
+}
+
+const addPageSpecificButtonsEventListeners = () => {
+    // addCalendarButtonAction();
+    addCreateCourseButtonAction();
+    // addChooseSetOfCoursesButtonAction();
 }
 
 const workflow = async () => {
     await fetchCourses();
-    enableFilterBar();
-    chooseSetOfCoursesAction();
-    addCourseButtonAction();
-    submitButtonAction();
-};
+    displayDefaultPageContent();
+    addPageSpecificButtonsEventListeners();
+}
 
 workflow();

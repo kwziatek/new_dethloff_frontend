@@ -7,7 +7,7 @@
     <link rel="stylesheet" href="/src/css/courses.css">
     <script src="/src/js/auth-check.js"></script>
     <script type="module" src="/src/js/global.js"></script>
-    <script type="module" src="/src/js/new_courses.js"></script>
+    <script type="module" src="/src/js/courses.js"></script>
     <title>Dethloff App</title>
 </head>
 <body>
@@ -56,7 +56,15 @@
         <ul id="teacherDropdown" class="dropdown-list">
         </ul>
         <input id="chosenTeacherId" type="hidden">
-        <input id="levelSearchInput" type="text" placeholder="poziom" autocomplete="off">
+        <input id="levelSearchInput" list="levelsList" type="text" placeholder="poziom" autocomplete="off">
+        <datalist id="levelsList">
+            <option value="A1">
+            <option value="A2">
+            <option value="B1">
+            <option value="B2">
+            <option value="C1">
+            <option value="C2">
+        </datalist>
         <button type="sumbit" class="btn-dialog" id="saveCourse"> Zapisz </button>
         <button type="button" class=" btn-dialog" id="cancelCreatingCourse" type="submit" onclick="addCourseModal.close()"> Anuluj</button>
     </form>

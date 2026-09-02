@@ -1,9 +1,7 @@
-What's next?
-  create datalist (or just list) for course levels, they options are fixed: A1, A2,..., C2.
-  it will be silimar to teacher input, but way easier, no data to be fetched from BE and no id storing, just plain text
+What's next
+  - implement "wybierz grupe kursów" button logic - can be just a another dialog with one input field - keep it simple
 
 Things to do:
-  - fix the course.js, wonder how to handle data BE API backend calls, filtering sets of courses and courses
   - wonder how to design the calendar (need to wait for course and course details page)
   - wonder what functionalities should the management page have?
 
@@ -53,3 +51,4 @@ done:
     - add course dialog
       - force user to click a teacher from dropdown (the input is deleted otherwise)
       - display custom error messages for trying to submit for all the input fields
+      - create datalist (or just list) for course levels, they options are fixed: A1, A2,..., C2.
