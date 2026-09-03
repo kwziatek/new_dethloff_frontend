@@ -28,6 +28,10 @@ const teacherDropdown = document.querySelector("#teacherDropdown");
 const hiddenTeacherIdInput = document.querySelector("#chosenTeacherId");
 const levelInput = document.querySelector("#levelSearchInput");
 
+const coursesSetInput = document.querySelector("#coursesSetSearchInput")
+const coursesSetDropdown = document.querySelector("#coursesSetDropdown");
+const hiddenCoursesSetIdInput = document.querySelector("#chosenCoursesSetId");
+
 let allCourses = [];
 let allSetsOfCourses = [];
 let allTeachers = [];
@@ -38,11 +42,25 @@ const createTeacherDropdownListElements = () => {
         newP.innerHTML = teacher.name + " " + teacher.surname;
         newP.dataset.teacherId = teacher.id;
         const newLI = document.createElement("li");
-        newLI.classList.add = "teacherLI";
+        newLI.classList.add("teacherLI");
         newLI.style.display = "none";
-        // teacher is needs to be stored in LI or P element
+        // teacher id needs to be stored in LI or P element
         newLI.appendChild(newP);
         teacherDropdown.appendChild(newLI);
+    })
+}
+
+const createCoursesSetDropdownListElements = () => {
+    allSetsOfCourses.forEach(course => {
+        const newP = document.createElement("p");
+        newP.innerHTML = course.name;
+        newP.dataset.coursesSetId = course.id;
+        const newLI = document.createElement("li");
+        newLI.classList.add("coursesSetLI");
+        newLI.style.display = "none";
+        // coursesSet id needs to be stored in LI or P element
+        newLI.appendChild(newP);
+        coursesSetDropdown.appendChild(newLI);
     })
 }
 
@@ -57,6 +75,7 @@ const fetchCourses = async () => {
         console.log(error);
     }
     createTeacherDropdownListElements();
+    createCoursesSetDropdownListElements();
 }
 
 const enableFilterBar = () => {
@@ -163,7 +182,7 @@ const addCreateCourseButtonAction = () => {
                 teacherDropdown.style.display = "block";
             }
 
-            Array.from(teacherDropdown.children).forEach(teacherLI => {
+            Array.from(teacherDropdown.querySelectorAll(".teacherLI")).forEach(teacherLI => {
                 const isMatch = teacherLI.textContent.toLocaleLowerCase().trim().includes(query);
                 if(isMatch) {
                     teacherLI.style.display = "";
@@ -197,10 +216,55 @@ const addCreateCourseButtonAction = () => {
     addSubmitFormAction(modal);
 }
 
+const addChooseSetOfCoursesButtonAction = () => {
+    const chooseSetOfCoursesButton = document.querySelector("#chooseCoursesSet");
+    const modal = document.querySelector("#chooseCoursesSetModal");
+
+    chooseSetOfCoursesButton.addEventListener("click", () => {
+        modal.showModal();
+
+        coursesSetInput.addEventListener("input", (e) => {
+            hiddenCoursesSetIdInput.value = "";
+            e.target.setCustomValidity("");
+
+            const query = coursesSetInput.value.toLocaleLowerCase().trim();
+            if(!query || query.length === 0) {
+                coursesSetDropdown.style.display = "none";
+            } else {
+                coursesSetDropdown.style.display = "block";
+            }
+
+            Array.from(coursesSetDropdown.querySelectorAll(".coursesSetLI")).forEach((coursesSetLI) => {
+                const isMatch = coursesSetLI.textContent.toLocaleLowerCase().trim().includes(query);
+                if(isMatch) {
+                    coursesSetLI.style.display = "";
+                } else {
+                    coursesSetLI.style.display = "none";
+                }
+                
+            });
+
+            coursesSetDropdown.addEventListener("mousedown", (e) => {
+                const chosenCoursesSet = e.target.textContent;
+                coursesSetInput.value = chosenCoursesSet;
+                coursesSetDropdown.style.display = "none";
+                hiddenCoursesSetIdInput.value = e.target.dataset.coursesSetId;
+            });
+
+            coursesSetInput.addEventListener("blur", () => {
+                if(hiddenCoursesSetIdInput.value === "") {
+                    coursesSetInput.value = "";
+                    coursesSetDropdown.style.display = "none";
+                }
+            });
+        });
+    })
+}
+
 const addPageSpecificButtonsEventListeners = () => {
     // addCalendarButtonAction();
     addCreateCourseButtonAction();
-    // addChooseSetOfCoursesButtonAction();
+    addChooseSetOfCoursesButtonAction();
 }
 
 const workflow = async () => {

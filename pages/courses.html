@@ -29,7 +29,7 @@
                 <button type="button" id="createCourse" class="btn btn-info">
                     Utwórz grupę
                 </button>
-                <button type="button" id="chooseCourseSet" class="btn btn-info">
+                <button type="button" id="chooseCoursesSet" class="btn btn-info">
                     Wybierz grupe kursów
                 </button>
             </div>
@@ -70,11 +70,15 @@
     </form>
 </dialog>
 
-<dialog id="chooseSetOfCoursesModal">
+<dialog id="chooseCoursesSetModal">
+    <form method="dialog" id="chooseCoursesSetForm">
         <h3> Wyszukaj grupę kursów </h3>
-        <input name="groupSearchInput" type="text" placeholder="np. '25/26" required autofocus>
+        <input id="coursesSetSearchInput" type="text" placeholder="np. '25/26" autocomplete="off" autofocus>
 
-        <!-- <ul id="groupList"></ul> -->
-        <button type="button" class="btn-dialog" id="closeGroupModal" type="submit" onclick="chooseSetOfCoursesModal.close()">Anuluj</button>
+        <ul id="coursesSetDropdown" class="dropdown-list"></ul>
+        <input id="chosenCoursesSetId" type="hidden">
+        <button type="submit" class="btn-dialog" id="confirmCoursesSet">Wyszukaj</button>
+        <button type="button" class="btn-dialog" id="closeCourseModal" type="submit" onclick="chooseCoursesSetModal.close()">Anuluj</button>
+    </form>
 </dialog>
 </html>
