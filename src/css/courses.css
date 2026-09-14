@@ -1,55 +1,71 @@
 @import "./global.css";
 
 main {
-    flex-direction: column;
+  flex-direction: column;
 }
 
 #setOfAllCourses {
-    /* border: 2px red solid; */
-    width: 90vw;
-    display: grid;
-    grid-template-columns: 25% 25% 25% 25%;
-    grid-template-rows: repeat(8, 12,5%);
-    font-size: 1.3rem;
+  width: 90vw;
+  display: grid;
+  grid-template-columns: 25% 25% 25% 25%;
+  grid-template-rows: repeat(8, 12, 5%);
+  font-size: 1.3rem;
 }
 
 input {
-    display: block;
-    font-size: 3rem;
-    text-decoration: none;
-    background-color: #BAC095;
-    padding: 0.25rem;
+  display: block;
+  font-size: 3rem;
+  text-decoration: none;
+  background-color: #bac095;
+  padding: 0.25rem;
+}
+
+dialog input {
+  display: block;
+  font-size: 3rem;
+  text-decoration: none;
+  background-color: #bac095;
+  padding: 0.25rem;
+  border-radius: 5px;
+}
+
+dialog label {
+  display: block;
+  font-size: 2rem;
+  padding: 0.5rem;
+}
+
+dialog h3 {
+  font-size: 3rem;
+  text-align: center;
+  padding: 1rem;
+}
+
+dialog .form-control {
+  position: relative;
+  margin-bottom: 3rem;
+  z-index: 1;
+}
+
+dialog .form-control:focus-within {
+  z-index: 10;
 }
 
 .course {
-    border: 2px black solid;
-    margin: 2px;
-    padding: 0.5rem;
-    background-color: #BAC095;
-    color: #3D4127;
-    transition: background-color 0.2s, color 0.2s;
+  border: 2px black solid;
+  margin: 2px;
+  padding: 0.5rem;
+  background-color: #bac095;
+  color: #3d4127;
+  transition:
+    background-color 0.2s,
+    color 0.2s;
 }
 
 .course:hover {
-  background-color: #3D4127;
-  color: #BAC095;
+  background-color: #3d4127;
+  color: #bac095;
 }
-
-dialog {
-  margin: auto; 
-  border: none;
-  border-radius: 8px;
-  padding: 2rem;
-  background-color: #636B2F;
-  width: min(90vw, 700px);
-  max-width: 90vw;
-}
-
-dialog::backdrop {
-    background: rgba(0,0,0,0.5);
-    backdrop-filter: blur(2px);
-} 
-
 
 #groupSearchInput {
   width: 100%;

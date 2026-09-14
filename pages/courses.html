@@ -1,84 +1,139 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="shortcut icon" type="image/x-icon" href="../assets/new_shortcut.png" />
-    <link rel="stylesheet" href="/src/css/courses.css">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="shortcut icon"
+      type="image/x-icon"
+      href="../assets/new_shortcut.png"
+    />
+    <link rel="stylesheet" href="/src/css/courses.css" />
     <script src="/src/js/auth-check.js"></script>
     <script type="module" src="/src/js/global.js"></script>
     <script type="module" src="/src/js/courses.js"></script>
     <title>Dethloff App</title>
-</head>
-<body>
+  </head>
+  <body>
     <header>
-        <h1> Grupy </h1>
-        <div id="buttonColumns">
-            <div class="defaultButtons">
-                <button type="button" id="goBack" class="btn btn-info">
-                    Powrót
-                </button>
-                <button type="button" id="logOut" class="btn btn-danger">
-                    Wyloguj
-                </button>
-            </div>
-            <div id="?SpecificButtons" class="pageSpecificButtons">
-                <button type="button" id="calendar" class="btn btn-info">
-                    Kalendarz
-                </button>
-                <button type="button" id="createCourse" class="btn btn-info">
-                    Utwórz grupę
-                </button>
-                <button type="button" id="chooseCoursesSet" class="btn btn-info">
-                    Wybierz grupe kursów
-                </button>
-            </div>
+      <h1>Grupy</h1>
+      <div id="buttonColumns">
+        <div class="defaultButtons">
+          <button type="button" id="goBack" class="btn btn-info">Powrót</button>
+          <button type="button" id="logOut" class="btn btn-danger">
+            Wyloguj
+          </button>
         </div>
+        <div id="?SpecificButtons" class="pageSpecificButtons">
+          <button type="button" id="calendar" class="btn btn-info">
+            Kalendarz
+          </button>
+          <button type="button" id="createCourse" class="btn btn-info">
+            Utwórz grupę
+          </button>
+          <button type="button" id="chooseCoursesSet" class="btn btn-info">
+            Wybierz grupe kursów
+          </button>
+        </div>
+      </div>
     </header>
     <main>
-        <div class="filterBarSection">
-            <input id="filterBar" placeholder="Wyszukaj kurs" autofocus autocomplete="off">
-        </div>
-        <div id="setOfAllCourses">
-
-        </div>
+      <div class="filterBarSection">
+        <input
+          id="filterBar"
+          placeholder="Wyszukaj kurs"
+          autofocus
+          autocomplete="off"
+        />
+      </div>
+      <div id="setOfAllCourses"></div>
     </main>
-    <footer>
+    <footer></footer>
+  </body>
 
-    </footer>
-</body>
-
-<dialog id="addCourseModal">
+  <dialog id="addCourseModal">
     <form method="dialog" id="addCourseForm">
-        <h3> Tworzenie grupy </h3>
-        <input id="courseNameInput" type="text" placeholder="nazwa grupy" autocomplete="off" autofocus>
-        <input id="teacherSearchInput" type="text" placeholder="lektor" autocomplete="off">
-        <ul id="teacherDropdown" class="dropdown-list">
-        </ul>
-        <input id="chosenTeacherId" type="hidden">
-        <input id="levelSearchInput" list="levelsList" type="text" placeholder="poziom" autocomplete="off">
+      <h3>Tworzenie grupy</h3>
+      <div class="form-control">
+        <label for="courseNameInput">Nazwa grupy</label>
+        <input
+          id="courseNameInput"
+          type="text"
+          placeholder="Wpisz nazwę grupy"
+          autocomplete="off"
+          autofocus
+        />
+      </div>
+      <div class="form-control">
+        <label for="teacherSearchInput">Lektor</label>
+        <input
+          id="teacherSearchInput"
+          type="text"
+          placeholder="Wybierz lektora..."
+          autocomplete="off"
+        />
+        <ul id="teacherDropdown" class="dropdown-list"></ul>
+        <input id="chosenTeacherId" type="hidden" />
+      </div>
+      <div class="form-control">
+        <label for="levelSearchInput">Poziom</label>
+        <input
+          id="levelSearchInput"
+          list="levelsList"
+          type="text"
+          placeholder="Wybierz poziom"
+          autocomplete="off"
+        />
         <datalist id="levelsList">
-            <option value="A1">
-            <option value="A2">
-            <option value="B1">
-            <option value="B2">
-            <option value="C1">
-            <option value="C2">
+          <option value="A1"></option>
+          <option value="A2"></option>
+          <option value="B1"></option>
+          <option value="B2"></option>
+          <option value="C1"></option>
+          <option value="C2"></option>
         </datalist>
-        <button type="sumbit" class="btn-dialog" id="saveCourse"> Zapisz </button>
-        <button type="button" class=" btn-dialog" id="cancelCreatingCourse" type="submit" onclick="addCourseModal.close()"> Anuluj</button>
-    </form>
-</dialog>
+      </div>
 
-<dialog id="chooseCoursesSetModal">
+      <button type="sumbit" class="btn-dialog" id="saveCourse">Zapisz</button>
+      <button
+        type="button"
+        class="btn-dialog"
+        id="cancelCreatingCourse"
+        type="submit"
+        onclick="addCourseModal.close()"
+      >
+        Anuluj
+      </button>
+    </form>
+  </dialog>
+
+  <dialog id="chooseCoursesSetModal">
     <form method="dialog" id="chooseCoursesSetForm">
-        <h3> Wyszukaj grupę kursów </h3>
-        <input id="coursesSetSearchInput" type="text" placeholder="np. '25/26" autocomplete="off" autofocus>
+      <h3>Wyszukaj grupę kursów</h3>
+      <label></label>
 
-        <ul id="coursesSetDropdown" class="dropdown-list"></ul>
-        <input id="chosenCoursesSetId" type="hidden">
-        <button type="submit" class="btn-dialog" id="confirmCoursesSet">Wyszukaj</button>
-        <button type="button" class="btn-dialog" id="closeCourseModal" type="submit" onclick="chooseCoursesSetModal.close()">Anuluj</button>
+      <input
+        id="coursesSetSearchInput"
+        type="text"
+        placeholder="np. '25/26"
+        autocomplete="off"
+        autofocus
+      />
+
+      <ul id="coursesSetDropdown" class="dropdown-list"></ul>
+      <input id="chosenCoursesSetId" type="hidden" />
+      <button type="submit" class="btn-dialog" id="confirmCoursesSet">
+        Wyszukaj
+      </button>
+      <button
+        type="button"
+        class="btn-dialog"
+        id="closeCourseModal"
+        type="submit"
+        onclick="chooseCoursesSetModal.close()"
+      >
+        Anuluj
+      </button>
     </form>
-</dialog>
+  </dialog>
 </html>

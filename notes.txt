@@ -1,5 +1,6 @@
 What's next
   - implement "wybierz grupe kursów" button logic - can be just a another dialog with one input field - keep it simple
+  - apply the dialog styles to all dialogs - keep in global css, keep it clean
 
 Things to do:
   - wonder how to design the calendar (need to wait for course and course details page)
