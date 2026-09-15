@@ -114,6 +114,37 @@ dialog {
   max-width: 90vw;
 }
 
+dialog input {
+  display: block;
+  font-size: 3rem;
+  text-decoration: none;
+  background-color: #bac095;
+  padding: 0.25rem;
+  border-radius: 5px;
+}
+
+dialog label {
+  display: block;
+  font-size: 2rem;
+  padding: 0.5rem;
+}
+
+dialog h3 {
+  font-size: 3rem;
+  text-align: center;
+  padding: 1rem;
+}
+
+dialog .form-control {
+  position: relative;
+  margin-bottom: 3rem;
+  z-index: 1;
+}
+
+dialog .form-control:focus-within {
+  z-index: 10;
+}
+
 dialog::backdrop {
   background-color: rgba(0, 0, 0, 0.5);
   backdrop-filter: blur(2px);

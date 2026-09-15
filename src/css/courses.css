@@ -20,37 +20,6 @@ input {
   padding: 0.25rem;
 }
 
-dialog input {
-  display: block;
-  font-size: 3rem;
-  text-decoration: none;
-  background-color: #bac095;
-  padding: 0.25rem;
-  border-radius: 5px;
-}
-
-dialog label {
-  display: block;
-  font-size: 2rem;
-  padding: 0.5rem;
-}
-
-dialog h3 {
-  font-size: 3rem;
-  text-align: center;
-  padding: 1rem;
-}
-
-dialog .form-control {
-  position: relative;
-  margin-bottom: 3rem;
-  z-index: 1;
-}
-
-dialog .form-control:focus-within {
-  z-index: 10;
-}
-
 .course {
   border: 2px black solid;
   margin: 2px;
