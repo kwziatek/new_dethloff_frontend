@@ -1,6 +1,7 @@
 What's next
+  - clean up the css into components group which can be usable multiple times, DRY!
+  - clean up the js code, so far it's not bad, but there might be something to change.
   - implement "wybierz grupe kursów" button logic - can be just a another dialog with one input field - keep it simple
-  - apply the dialog styles to all dialogs - keep in global css, keep it clean
 
 Things to do:
   - wonder how to design the calendar (need to wait for course and course details page)
@@ -53,3 +54,5 @@ done:
       - force user to click a teacher from dropdown (the input is deleted otherwise)
       - display custom error messages for trying to submit for all the input fields
       - create datalist (or just list) for course levels, they options are fixed: A1, A2,..., C2.
+
+  - apply the dialog styles to all dialogs - keep in global css, keep it clean

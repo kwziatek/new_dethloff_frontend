@@ -1,56 +1,48 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="shortcut icon" type="image/x-icon" href="../assets/new_shortcut.png" />
-    <link rel="stylesheet" href="/src/css/dashboard.css">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="shortcut icon"
+      type="image/x-icon"
+      href="../assets/new_shortcut.png"
+    />
+    <link rel="stylesheet" href="/src/css/dashboard.css" />
     <script src="/src/js/auth-check.js"></script>
     <script type="module" src="/src/js/global.js"></script>
     <script type="module" src="/src/js/dashboard.js"></script>
     <title>Dethloff App</title>
-</head>
-<body>
+  </head>
+  <body>
     <header>
-        <h1> Dashboard </h1>
-        <div id="buttonColumns">
-            <div class="defaultButtons">
-                <button type="button" id="goBack" class="btn btn-info">
-                    Powrót
-                </button>
-                <button type="button" id="logOut" class="btn btn-danger">
-                    Wyloguj
-                </button>
-            </div>
-            <div id="dashboardSpecificButtons" class="pageSpecificButtons">
-
-            </div>
+      <h1>Dashboard</h1>
+      <div id="buttonColumns">
+        <div class="defaultButtons">
+          <button type="button" id="goBack" class="btn btn-info" disabled>
+            Powrót
+          </button>
+          <button type="button" id="logOut" class="btn btn-danger">
+            Wyloguj
+          </button>
         </div>
+        <div id="dashboardSpecificButtons" class="pageSpecificButtons"></div>
+      </div>
     </header>
     <main>
-        <a href="students">
-                <div class="box">
-                    Uczniowie
-                </div>
-        </a> 
-        <a href="teachers">
-            <div class="box">
-                Kadra lektorów
-            </div>
-        </a> 
-        <a href="courses">
-            <div class="box">
-                Grupy i zajęcia
-            </div>
-        </a> 
-        <a href="management">
-            <div class="box">
-                Panel zarządzania
-            </div>
-        </a> 
+      <a href="students">
+        <div class="box">Uczniowie</div>
+      </a>
+      <a href="teachers">
+        <div class="box">Kadra lektorów</div>
+      </a>
+      <a href="courses">
+        <div class="box">Grupy i zajęcia</div>
+      </a>
+      <a href="management">
+        <div class="box">Panel zarządzania</div>
+      </a>
     </main>
-    <footer>
-
-    </footer>
-</body>
+    <footer></footer>
+  </body>
 </html>

@@ -10,6 +10,8 @@
   --main-font: "Cinzel Decorative", serif;
 }
 
+/* default items stylization */
+
 body {
   font-family: var(--main-font);
   height: 100vh;
@@ -29,9 +31,6 @@ main {
   gap: 3rem;
 }
 
-footer {
-}
-
 h1 {
   padding: 5rem 0 0 0;
   font-size: 6rem;
@@ -45,12 +44,28 @@ h2 {
   justify-content: center;
 }
 
+input {
+  font-size: 1rem;
+  font-family: var(--main-font);
+}
+
+input:focus {
+  outline: 3px #3d4127 solid;
+}
+
+input.valid {
+  outline: 5px solid green;
+}
+
 a {
-  color: #3d4127;
   text-decoration: none;
-  font-weight: bold;
+  color: black;
   -webkit-user-drag: none;
 }
+
+/* default items stylization */
+
+/* box section */
 
 .box {
   font-size: 2.5rem;
@@ -62,6 +77,8 @@ a {
   align-items: center;
   border-radius: 25%;
   background-color: #bac095;
+  color: #3d4127;
+  font-weight: bold;
   text-align: justify;
   transition:
     background-color 0.2s,
@@ -72,6 +89,8 @@ a {
   color: #bac095;
   background-color: #3d4127;
 }
+
+/* box section */
 
 #buttonColumns {
   display: flex;
@@ -95,61 +114,6 @@ a {
   margin-right: 2rem;
 }
 
-input {
-  font-size: 1rem;
-  font-family: var(--main-font);
-}
-
-input:focus {
-  outline: 3px #3d4127 solid;
-}
-
-dialog {
-  margin: auto;
-  border: none;
-  border-radius: 8px;
-  padding: 2rem;
-  background-color: #636b2f;
-  width: min(90vw, 800px);
-  max-width: 90vw;
-}
-
-dialog input {
-  display: block;
-  font-size: 3rem;
-  text-decoration: none;
-  background-color: #bac095;
-  padding: 0.25rem;
-  border-radius: 5px;
-}
-
-dialog label {
-  display: block;
-  font-size: 2rem;
-  padding: 0.5rem;
-}
-
-dialog h3 {
-  font-size: 3rem;
-  text-align: center;
-  padding: 1rem;
-}
-
-dialog .form-control {
-  position: relative;
-  margin-bottom: 3rem;
-  z-index: 1;
-}
-
-dialog .form-control:focus-within {
-  z-index: 10;
-}
-
-dialog::backdrop {
-  background-color: rgba(0, 0, 0, 0.5);
-  backdrop-filter: blur(2px);
-}
-
 .modal-actions {
   display: flex;
   justify-content: flex-end;
@@ -166,6 +130,10 @@ dialog::backdrop {
   border: none;
   cursor: pointer;
   font-weight: 500;
+}
+
+.btn:hover {
+  scale: 1.03;
 }
 
 .btn-danger {
@@ -268,7 +236,8 @@ dialog::backdrop {
 
 .dropdown-list p {
   background-color: white;
-  font-size: 1.5rem;
+  font-size: 3rem;
+  padding: 10px;
 }
 
 .dropdown-list p:hover {
@@ -278,6 +247,17 @@ dialog::backdrop {
 /* dropdown-list section */
 
 /* dialog section */
+
+dialog {
+  margin: auto;
+  border: none;
+  border-radius: 8px;
+  padding: 2rem;
+  background-color: #636b2f;
+  width: min(90vw, 800px);
+  max-width: 90vw;
+}
+
 dialog input {
   display: block;
   font-size: 3rem;
@@ -309,4 +289,46 @@ dialog .form-control:focus-within {
   z-index: 10;
 }
 
+dialog::backdrop {
+  background-color: rgba(0, 0, 0, 0.5);
+  backdrop-filter: blur(2px);
+}
+
 /* dialog section */
+
+/* filter bar */
+
+input#filterBar {
+  display: block;
+  font-size: 3rem;
+  text-decoration: none;
+  background-color: #bac095;
+  padding: 0.25rem;
+}
+
+/* filter bar */
+
+/* card */
+.card-link {
+  text-decoration: none;
+  -webkit-user-drag: none;
+}
+
+.card-content {
+  border: 2px black solid;
+  margin: 2px;
+  padding: 0.5rem;
+  background-color: #bac095;
+  color: #3d4127;
+  font-weight: bold;
+  transition:
+    background-color 0.2s,
+    color 0.2s;
+}
+
+.card-link:hover .card-content {
+  background-color: #3d4127;
+  color: #bac095;
+  scale: 1.01;
+}
+/* card */

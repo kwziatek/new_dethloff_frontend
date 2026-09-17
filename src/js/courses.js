@@ -83,9 +83,7 @@ const enableFilterBar = () => {
     let matchCount = 0;
 
     Array.from(listOfCoursesSpace.children).forEach((course) => {
-      const nameSurname = course
-        .querySelector(".course")
-        .textContent.toLowerCase();
+      const nameSurname = course.querySelector("p").textContent.toLowerCase();
       const isMatch = nameSurname.includes(userInput);
 
       if (isMatch && matchCount < availableSpace) {
@@ -101,24 +99,32 @@ const enableFilterBar = () => {
 const displayDefaultPageContent = () => {
   let shownCount = 0;
   allCourses.forEach((element) => {
-    const newA = document.createElement("a");
-    const newP = document.createElement("p");
-    newP.classList.add("course");
-    newP.innerHTML =
+    // card-link
+    const cardLink = document.createElement("a");
+    cardLink.href = "/pages/courseDetails" + "?id=" + element.id;
+    cardLink.classList.add("card-link");
+    // card-content
+    const cardContent = document.createElement("div");
+    cardContent.classList.add("card-content");
+    // course info - paragraph
+    const courseInfo = document.createElement("p");
+    courseInfo.innerHTML =
       element.name +
       " <br>" +
       element.teacher.name +
       " " +
       element.teacher.surname;
-    newA.href = "/pages/courseDetails" + "?id=" + element.id;
-    newA.classList.add("courseAnchor");
-    newA.appendChild(newP);
+    // link elements
+    cardContent.appendChild(courseInfo);
+    cardLink.appendChild(cardContent);
+    // check if there is space for card-link
     if (shownCount >= availableSpace) {
-      newA.style.display = "none";
+      cardLink.style.display = "none";
     } else {
+      cardLink.style.display = "";
       shownCount++;
     }
-    listOfCoursesSpace.append(newA);
+    listOfCoursesSpace.appendChild(cardLink);
   });
   enableFilterBar();
 };
@@ -177,12 +183,19 @@ const addCreateCourseButtonAction = () => {
     courseNameInput.addEventListener("input", (e) => {
       e.target.setCustomValidity("");
     });
+
+    courseNameInput.addEventListener("blur", (e) => {
+      if (e.target.value !== "") {
+        e.target.classList.add("valid");
+      } else {
+        e.target.classList.remove("valid");
+      }
+    });
     // *name section* //
 
     // *teacher section* //
     teacherInput.addEventListener("input", (e) => {
       hiddenTeacherIdInput.value = "";
-      teacherInput.style.outline = "3px #3d4127 solid";
       e.target.setCustomValidity("");
       const query = e.target.value.toLowerCase().trim();
 
@@ -211,13 +224,14 @@ const addCreateCourseButtonAction = () => {
       teacherInput.value = chosenTeacher;
       teacherDropdown.style.display = "none";
       hiddenTeacherIdInput.value = e.target.dataset.teacherId;
-      teacherInput.style.outline = "5px solid green";
+      teacherInput.classList.add("valid");
     });
 
     teacherInput.addEventListener("blur", () => {
       if (hiddenTeacherIdInput.value === "") {
         teacherInput.value = "";
         teacherDropdown.style.display = "none";
+        teacherInput.classList.remove("valid");
       }
     });
     // *teacher section* //
@@ -225,6 +239,14 @@ const addCreateCourseButtonAction = () => {
     // *level section* //
     levelInput.addEventListener("input", (e) => {
       e.target.setCustomValidity("");
+    });
+
+    levelInput.addEventListener("blur", (e) => {
+      if (e.target.value !== "") {
+        e.target.classList.add("valid");
+      } else {
+        e.target.classList.remove("valid");
+      }
     });
     // *level section* //
   });

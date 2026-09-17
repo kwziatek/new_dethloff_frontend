@@ -1,56 +1,107 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="shortcut icon" type="image/x-icon" href="../assets/new_shortcut.png" />
-    <link rel="stylesheet" href="/src/css/students.css">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="shortcut icon"
+      type="image/x-icon"
+      href="../assets/new_shortcut.png"
+    />
+    <link rel="stylesheet" href="/src/css/students.css" />
     <script src="/src/js/auth-check.js"></script>
     <script type="module" src="/src/js/global.js"></script>
     <script type="module" src="/src/js/students.js"></script>
     <title>Dethloff App</title>
-</head>
-<body>
+  </head>
+  <body>
     <header>
-        <h1> Uczniowie </h1>
-        <div id="buttonColumns">
-            <div class="defaultButtons">
-                <button type="button" id="goBack" class="btn btn-info">
-                    Powrót
-                </button>
-                <button type="button" id="logOut" class="btn btn-danger">
-                    Wyloguj
-                </button>
-            </div>
-            <div id="studentsPageSpecificButtons" class="pageSpecificButtons">
-                <button type="button" id="addStudent" class="btn btn-info">
-                    Dodaj ucznia
-                </button>
-            </div>
+      <h1>Uczniowie</h1>
+      <div id="buttonColumns">
+        <div class="defaultButtons">
+          <button type="button" id="goBack" class="btn btn-info">Powrót</button>
+          <button type="button" id="logOut" class="btn btn-danger">
+            Wyloguj
+          </button>
         </div>
+        <div id="studentsPageSpecificButtons" class="pageSpecificButtons">
+          <button type="button" id="addStudent" class="btn btn-info">
+            Dodaj ucznia
+          </button>
+        </div>
+      </div>
     </header>
     <main>
-        <div class="filterBarSection">
-            <input id="filterBar" placeholder="Wyszukaj ucznia" autofocus autocomplete="off">
-        </div>
-        <div id="setOfStudents">
-
-        </div>
+      <div class="filterBarSection">
+        <input
+          id="filterBar"
+          placeholder="Wyszukaj ucznia"
+          autofocus
+          autocomplete="off"
+        />
+      </div>
+      <div id="setOfStudents"></div>
     </main>
-    <footer>
+    <footer></footer>
+  </body>
 
-    </footer>
-</body>
-
-<dialog id="studentModal">
+  <dialog id="studentModal">
     <form method="dialog" id="studentForm">
-        <h3> Dodawanie ucznia </h3>
-        <input name="name" type="text" placeholder="Imię" required autofocus/>
-        <input name="surname" type="text" placeholder="Naziwsko" required/>
-        <input name="pesel" type="text" placeholder="Pesel" required/>
-        <input name="birthDate" type="text" placeholder="Data urodzenia" required/>
-        <button class="btn-dialog" id="saveStudent" type="submit"> Zapisz </button>
-        <button class="btn-dialog" id="cancelAddingStudent" type="button" onclick="studentModal.close()"> Anuluj </button>
+      <h3>Dodawanie ucznia</h3>
+      <div class="form-control">
+        <label for="name">Imię</label>
+        <input
+          id="name"
+          name="name"
+          type="text"
+          placeholder="Imię"
+          required
+          autocomplete="off"
+          autofocus
+        />
+      </div>
+      <div class="form-control">
+        <label for="surname">Nazwisko</label>
+        <input
+          id="surname"
+          name="surname"
+          type="text"
+          placeholder="Naziwsko"
+          required
+          autocomplete="off"
+        />
+      </div>
+      <div class="form-control">
+        <label for="pesel">PESEL</label>
+        <input
+          id="pesel"
+          name="pesel"
+          type="text"
+          placeholder="Pesel"
+          required
+          autocomplete="off"
+        />
+      </div>
+      <div class="form-control">
+        <label for="birthDate">Data Urodzenia</label>
+        <input
+          id="birthDate"
+          name="birthDate"
+          type="text"
+          placeholder="Data urodzenia"
+          required
+          autocomplete="off"
+        />
+      </div>
+      <button class="btn-dialog" id="saveStudent" type="submit">Zapisz</button>
+      <button
+        class="btn-dialog"
+        id="cancelAddingStudent"
+        type="button"
+        onclick="studentModal.close()"
+      >
+        Anuluj
+      </button>
     </form>
-</dialog>
+  </dialog>
 </html>

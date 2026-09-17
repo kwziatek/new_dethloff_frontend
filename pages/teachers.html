@@ -1,57 +1,164 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="shortcut icon" type="image/x-icon" href="../assets/new_shortcut.png" />
-    <link rel="stylesheet" href="/src/css/global.css">
-    <link rel="stylesheet" href="/src/css/teachers.css">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="shortcut icon"
+      type="image/x-icon"
+      href="../assets/new_shortcut.png"
+    />
+    <link rel="stylesheet" href="/src/css/global.css" />
+    <link rel="stylesheet" href="/src/css/teachers.css" />
     <script src="/src/js/auth-check.js"></script>
     <script type="module" src="/src/js/global.js"></script>
     <script type="module" src="/src/js/teachers.js"></script>
     <title>Dethloff App</title>
-</head>
-<body>
+  </head>
+  <body>
     <header>
-        <h1> Kadra lektorów </h1>
-        <div id="buttonColumns">
-            <div class="defaultButtons">
-                <button type="button" id="goBack" class="btn btn-info">
-                    Powrót
-                </button>
-                <button type="button" id="logOut" class="btn btn-danger">
-                    Wyloguj
-                </button>
-            </div>
-            <div id="teachersPageSpecificButtons" class="pageSpecificButtons">
-                <button type="button" id="addTeacher" class="btn btn-info">
-                    Dodaj lektora
-                </button>
-            </div>
+      <h1>Kadra lektorów</h1>
+      <div id="buttonColumns">
+        <div class="defaultButtons">
+          <button type="button" id="goBack" class="btn btn-info">Powrót</button>
+          <button type="button" id="logOut" class="btn btn-danger">
+            Wyloguj
+          </button>
         </div>
+        <div id="teachersPageSpecificButtons" class="pageSpecificButtons">
+          <button type="button" id="addTeacher" class="btn btn-info">
+            Dodaj lektora
+          </button>
+        </div>
+      </div>
     </header>
-        <main>
-        <div class="filterBarSection">
-            <input id="filterBar" placeholder="Wyszukaj lektora" autofocus autocomplete="off">
-        </div>
-        <div id="setOfTeachers">
-            
-        </div>
+    <main>
+      <div class="filterBarSection">
+        <input
+          id="filterBar"
+          placeholder="Wyszukaj lektora"
+          autofocus
+          autocomplete="off"
+        />
+      </div>
+      <div id="setOfTeachers"></div>
     </main>
-    <footer>
+    <footer></footer>
+  </body>
 
-    </footer>
-</body>
-
-<dialog id="teacherModal">
+  <dialog id="teacherModal">
     <form method="dialog" id="teacherForm">
-        <h3> Dodawanie lektora </h3>
-        <input name="name" type="text" placeholder="Imię" required autofocus/>
-        <input name="surname" type="text" placeholder="Naziwsko" required/>
-        <input name="pesel" type="text" placeholder="Pesel" required/>
-        <input name="birthDate" type="text" placeholder="Data urodzenia" required/>
-        <button class="btn-dialog" id="saveTeacher" type="submit"> Zapisz </button>
-        <button class="btn-dialog" id="cancelAddingTeacher" type="button" onclick="teacherModal.close()"> Anuluj </button>
+      <h3>Dodawanie lektora</h3>
+      <div class="form-control">
+        <label for="name">Imię</label>
+        <input
+          id="name"
+          name="name"
+          type="text"
+          placeholder="Imię"
+          required
+          autocomplete="off"
+          autofocus
+        />
+      </div>
+      <div class="form-control">
+        <label for="surname">Nazwisko</label>
+        <input
+          id="surname"
+          name="surname"
+          type="text"
+          placeholder="Naziwsko"
+          required
+          autocomplete="off"
+        />
+      </div>
+      <div class="form-control">
+        <label for="pesel">PESEL</label>
+        <input
+          id="pesel"
+          name="pesel"
+          type="text"
+          placeholder="Pesel"
+          required
+          autocomplete="off"
+        />
+      </div>
+      <div class="form-control">
+        <label for="birthDate">Data Urodzenia</label>
+        <input
+          id="birthDate"
+          name="birthDate"
+          type="text"
+          placeholder="Data urodzenia"
+          required
+          autocomplete="off"
+        />
+      </div>
+      <button class="btn-dialog" id="saveTeacher" type="submit">Zapisz</button>
+      <button
+        class="btn-dialog"
+        id="cancelAddingTeacher"
+        type="button"
+        onclick="teacherModal.close()"
+      >
+        Anuluj
+      </button>
     </form>
-</dialog>
+  </dialog>
+
+  <dialog id="addCourseModal">
+    <form method="dialog" id="addCourseForm">
+      <h3>Tworzenie grupy</h3>
+      <div class="form-control">
+        <label for="courseNameInput">Nazwa grupy</label>
+        <input
+          id="courseNameInput"
+          type="text"
+          placeholder="Wpisz nazwę grupy"
+          autocomplete="off"
+          autofocus
+        />
+      </div>
+      <div class="form-control">
+        <label for="teacherSearchInput">Lektor</label>
+        <input
+          id="teacherSearchInput"
+          type="text"
+          placeholder="Wybierz lektora..."
+          autocomplete="off"
+        />
+        <ul id="teacherDropdown" class="dropdown-list"></ul>
+        <input id="chosenTeacherId" type="hidden" />
+      </div>
+      <div class="form-control">
+        <label for="levelSearchInput">Poziom</label>
+        <input
+          id="levelSearchInput"
+          list="levelsList"
+          type="text"
+          placeholder="Wybierz poziom"
+          autocomplete="off"
+        />
+        <datalist id="levelsList">
+          <option value="A1"></option>
+          <option value="A2"></option>
+          <option value="B1"></option>
+          <option value="B2"></option>
+          <option value="C1"></option>
+          <option value="C2"></option>
+        </datalist>
+      </div>
+
+      <button type="sumbit" class="btn-dialog" id="saveCourse">Zapisz</button>
+      <button
+        type="button"
+        class="btn-dialog"
+        id="cancelCreatingCourse"
+        type="submit"
+        onclick="addCourseModal.close()"
+      >
+        Anuluj
+      </button>
+    </form>
+  </dialog>
 </html>

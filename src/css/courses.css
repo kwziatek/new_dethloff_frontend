@@ -7,57 +7,6 @@ main {
 #setOfAllCourses {
   width: 90vw;
   display: grid;
-  grid-template-columns: 25% 25% 25% 25%;
-  grid-template-rows: repeat(8, 12, 5%);
+  grid-template-columns: repeat(4, 1fr);
   font-size: 1.3rem;
-}
-
-input {
-  display: block;
-  font-size: 3rem;
-  text-decoration: none;
-  background-color: #bac095;
-  padding: 0.25rem;
-}
-
-.course {
-  border: 2px black solid;
-  margin: 2px;
-  padding: 0.5rem;
-  background-color: #bac095;
-  color: #3d4127;
-  transition:
-    background-color 0.2s,
-    color 0.2s;
-}
-
-.course:hover {
-  background-color: #3d4127;
-  color: #bac095;
-}
-
-#groupSearchInput {
-  width: 100%;
-  padding: 8px 12px;
-  margin: 12px 0;
-  box-sizing: border-box;
-}
-
-#groupList {
-  list-style: none;
-  padding: 0;
-  max-height: 200px;
-  overflow-y: auto;
-  border: 1px solid #ccc;
-  border-radius: 4px;
-}
-
-#groupList li {
-  padding: 10px 14px;
-  cursor: pointer;
-  border-bottom: 1px solid #eee;
-}
-
-#groupList li:hover {
-  background-color: #f0f0f0;
 }
