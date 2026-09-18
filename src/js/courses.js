@@ -1,13 +1,3 @@
-// fetch the data from BE API:
-// 1. all courses (may be detailed) data
-// 2. all levels of courses
-// 3. all teachers
-// 4. all sets of courses
-
-// create course button
-// 1. store course name
-// 2. enable search bar tool, searching among the fetched teachers
-// 3. the same with level of courses
 import axios from "axios";
 import { setRedirectToast, showToast } from "./global";
 
@@ -27,10 +17,13 @@ const teacherInput = document.querySelector("#teacherSearchInput");
 const teacherDropdown = document.querySelector("#teacherDropdown");
 const hiddenTeacherIdInput = document.querySelector("#chosenTeacherId");
 const levelInput = document.querySelector("#levelSearchInput");
-
 const coursesSetInput = document.querySelector("#coursesSetSearchInput");
 const coursesSetDropdown = document.querySelector("#coursesSetDropdown");
 const hiddenCoursesSetIdInput = document.querySelector("#chosenCoursesSetId");
+
+const coursesSetInput2 = document.querySelector("#coursesSetSearchInput2");
+const coursesSetDropdown2 = document.querySelector("#coursesSetDropdown2");
+const hiddenCoursesSetIdInput2 = document.querySelector("#chosenCoursesSetId2");
 
 let allCourses = [];
 let allSetsOfCourses = [];
@@ -61,6 +54,7 @@ const createCoursesSetDropdownListElements = () => {
     // coursesSet id needs to be stored in LI or P element
     newLI.appendChild(newP);
     coursesSetDropdown.appendChild(newLI);
+    coursesSetDropdown2.appendChild(newLI.cloneNode(true));
   });
 };
 
@@ -108,12 +102,18 @@ const displayDefaultPageContent = () => {
     cardContent.classList.add("card-content");
     // course info - paragraph
     const courseInfo = document.createElement("p");
+    courseInfo.classList.add("card-paragraph");
     courseInfo.innerHTML =
       element.name +
+      " " +
+      element.setOfCourses.name +
       " <br>" +
       element.teacher.name +
       " " +
       element.teacher.surname;
+    courseInfo.dataset.coursesSetId = element.setOfCourses
+      ? element.setOfCourses.id
+      : null;
     // link elements
     cardContent.appendChild(courseInfo);
     cardLink.appendChild(cardContent);
@@ -129,7 +129,7 @@ const displayDefaultPageContent = () => {
   enableFilterBar();
 };
 
-const addSubmitFormAction = (modal) => {
+const submitAddCourseForm = (modal) => {
   const form = document.querySelector("#addCourseForm");
   const validLevels = Array.from(
     document.querySelectorAll("#levelsList option"),
@@ -151,6 +151,7 @@ const addSubmitFormAction = (modal) => {
       // create json - BE API payload
       const newCourse = {
         name: courseNameInput.value,
+        setOfCoursesId: hiddenCoursesSetIdInput.value,
         teacherId: hiddenTeacherIdInput.value,
         level: levelInput.value,
       };
@@ -160,7 +161,6 @@ const addSubmitFormAction = (modal) => {
         const responseData = await (
           await api.post("/api/courses", newCourse, auth)
         ).data;
-        console.log(responseData);
         setRedirectToast("Pomyślnie utworzono kurs", "success");
         // window.location.href = `/coursedetails?id=${responseData.id}`;
         modal.close();
@@ -192,6 +192,49 @@ const addCreateCourseButtonAction = () => {
       }
     });
     // *name section* //
+
+    // *set of courses section* //
+    coursesSetInput.addEventListener("input", (e) => {
+      hiddenCoursesSetIdInput.value = "";
+      e.target.setCustomValidity("");
+
+      const query = coursesSetInput.value.toLocaleLowerCase().trim();
+      if (!query || query.length === 0) {
+        coursesSetDropdown.style.display = "none";
+      } else {
+        coursesSetDropdown.style.display = "block";
+      }
+
+      Array.from(coursesSetDropdown.querySelectorAll(".coursesSetLI")).forEach(
+        (coursesSetLI) => {
+          const isMatch = coursesSetLI.textContent
+            .toLocaleLowerCase()
+            .trim()
+            .includes(query);
+          if (isMatch) {
+            coursesSetLI.style.display = "";
+          } else {
+            coursesSetLI.style.display = "none";
+          }
+        },
+      );
+    });
+    coursesSetDropdown.addEventListener("mousedown", (e) => {
+      const chosenCoursesSet = e.target.textContent;
+      coursesSetInput.value = chosenCoursesSet;
+      coursesSetDropdown.style.display = "none";
+      hiddenCoursesSetIdInput.value = e.target.dataset.coursesSetId;
+      coursesSetInput.classList.add("valid");
+    });
+
+    coursesSetInput.addEventListener("blur", () => {
+      if (hiddenCoursesSetIdInput.value === "") {
+        coursesSetInput.value = "";
+        coursesSetDropdown.style.display = "none";
+        coursesSetInput.classList.remove("valid");
+      }
+    });
+    // *set of courses section* //
 
     // *teacher section* //
     teacherInput.addEventListener("input", (e) => {
@@ -250,7 +293,29 @@ const addCreateCourseButtonAction = () => {
     });
     // *level section* //
   });
-  addSubmitFormAction(modal);
+  submitAddCourseForm(modal);
+};
+
+const submitChooseCoursesSetForm = (modal) => {
+  const form = document.querySelector("#chooseCoursesSetForm");
+  form.addEventListener("submit", (e) => {
+    e.preventDefault();
+
+    showToast("wybrano grupę kursów: " + coursesSetInput2.value, "success");
+    Array.from(listOfCoursesSpace.children).forEach((course) => {
+      const courseData = course.querySelector(".card-paragraph");
+      if (
+        !courseData.dataset.coursesSetId ||
+        hiddenCoursesSetIdInput2.value !== courseData.dataset.coursesSetId
+      ) {
+        course.style.display = "none";
+      } else {
+        course.style.display = "";
+      }
+    });
+    form.reset();
+    modal.close();
+  });
 };
 
 const addChooseSetOfCoursesButtonAction = () => {
@@ -260,18 +325,18 @@ const addChooseSetOfCoursesButtonAction = () => {
   chooseSetOfCoursesButton.addEventListener("click", () => {
     modal.showModal();
 
-    coursesSetInput.addEventListener("input", (e) => {
-      hiddenCoursesSetIdInput.value = "";
+    coursesSetInput2.addEventListener("input", (e) => {
+      hiddenCoursesSetIdInput2.value = "";
       e.target.setCustomValidity("");
 
-      const query = coursesSetInput.value.toLocaleLowerCase().trim();
+      const query = coursesSetInput2.value.toLocaleLowerCase().trim();
       if (!query || query.length === 0) {
-        coursesSetDropdown.style.display = "none";
+        coursesSetDropdown2.style.display = "none";
       } else {
-        coursesSetDropdown.style.display = "block";
+        coursesSetDropdown2.style.display = "block";
       }
 
-      Array.from(coursesSetDropdown.querySelectorAll(".coursesSetLI")).forEach(
+      Array.from(coursesSetDropdown2.querySelectorAll(".coursesSetLI")).forEach(
         (coursesSetLI) => {
           const isMatch = coursesSetLI.textContent
             .toLocaleLowerCase()
@@ -285,21 +350,24 @@ const addChooseSetOfCoursesButtonAction = () => {
         },
       );
 
-      coursesSetDropdown.addEventListener("mousedown", (e) => {
+      coursesSetDropdown2.addEventListener("mousedown", (e) => {
         const chosenCoursesSet = e.target.textContent;
-        coursesSetInput.value = chosenCoursesSet;
-        coursesSetDropdown.style.display = "none";
-        hiddenCoursesSetIdInput.value = e.target.dataset.coursesSetId;
+        coursesSetInput2.value = chosenCoursesSet;
+        coursesSetDropdown2.style.display = "none";
+        hiddenCoursesSetIdInput2.value = e.target.dataset.coursesSetId;
+        coursesSetInput2.classList.add("valid");
       });
 
-      coursesSetInput.addEventListener("blur", () => {
-        if (hiddenCoursesSetIdInput.value === "") {
-          coursesSetInput.value = "";
-          coursesSetDropdown.style.display = "none";
+      coursesSetInput2.addEventListener("blur", () => {
+        if (hiddenCoursesSetIdInput2.value === "") {
+          coursesSetInput2.value = "";
+          coursesSetDropdown2.style.display = "none";
+          coursesSetInput2.classList.remove("valid");
         }
       });
     });
   });
+  submitChooseCoursesSetForm(modal);
 };
 
 const addPageSpecificButtonsEventListeners = () => {

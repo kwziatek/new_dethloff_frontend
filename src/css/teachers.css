@@ -3,10 +3,3 @@
 main {
   flex-direction: column;
 }
-
-#setOfTeachers {
-  width: 90vw;
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  font-size: 1.3rem;
-}

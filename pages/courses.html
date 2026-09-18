@@ -16,7 +16,7 @@
   </head>
   <body>
     <header>
-      <h1>Grupy</h1>
+      <h1>Kursy</h1>
       <div id="buttonColumns">
         <div class="defaultButtons">
           <button type="button" id="goBack" class="btn btn-info">Powrót</button>
@@ -46,7 +46,7 @@
           autocomplete="off"
         />
       </div>
-      <div id="setOfAllCourses"></div>
+      <div id="setOfAllCourses" class="cards-container"></div>
     </main>
     <footer></footer>
   </body>
@@ -65,6 +65,17 @@
         />
       </div>
       <div class="form-control">
+        <label for="coursesSetSearchInput">Grupa kursów</label>
+        <input
+          id="coursesSetSearchInput"
+          type="text"
+          placeholder="Wybierz grupę kursów..."
+          autocomplete="off"
+        />
+        <ul id="coursesSetDropdown" class="dropdown-list"></ul>
+        <input id="chosenCoursesSetId" type="hidden" />
+      </div>
+      <div class="form-control">
         <label for="teacherSearchInput">Lektor</label>
         <input
           id="teacherSearchInput"
@@ -81,7 +92,7 @@
           id="levelSearchInput"
           list="levelsList"
           type="text"
-          placeholder="Wybierz poziom"
+          placeholder="Wybierz poziom..."
           autocomplete="off"
         />
         <datalist id="levelsList">
@@ -110,18 +121,21 @@
   <dialog id="chooseCoursesSetModal">
     <form method="dialog" id="chooseCoursesSetForm">
       <h3>Wyszukaj grupę kursów</h3>
+      <div class="form-control">
+        <label for="coursesSetSearchInput2">Grupa kursów</label>
+        <input
+          id="coursesSetSearchInput2"
+          type="text"
+          placeholder="np. '25/26"
+          autocomplete="off"
+          autofocus
+        />
+
+        <ul id="coursesSetDropdown2" class="dropdown-list"></ul>
+        <input id="chosenCoursesSetId2" type="hidden" />
+      </div>
       <label></label>
 
-      <input
-        id="coursesSetSearchInput"
-        type="text"
-        placeholder="np. '25/26"
-        autocomplete="off"
-        autofocus
-      />
-
-      <ul id="coursesSetDropdown" class="dropdown-list"></ul>
-      <input id="chosenCoursesSetId" type="hidden" />
       <button type="submit" class="btn-dialog" id="confirmCoursesSet">
         Wyszukaj
       </button>
