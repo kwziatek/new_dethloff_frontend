@@ -29,6 +29,10 @@ let allCourses = [];
 let allSetsOfCourses = [];
 let allTeachers = [];
 
+const removeValidClassFromInput = (inputFields) => {
+  inputFields.forEach((input) => input.classList.remove("valid"));
+};
+
 const createTeacherDropdownListElements = () => {
   allTeachers.forEach((teacher) => {
     const newP = document.createElement("p");
@@ -155,6 +159,7 @@ const submitAddCourseForm = (modal) => {
         teacherId: hiddenTeacherIdInput.value,
         level: levelInput.value,
       };
+      removeValidClassFromInput(Array.from(form.querySelectorAll("input")));
       form.reset();
       // call BE API
       try {
@@ -313,7 +318,24 @@ const submitChooseCoursesSetForm = (modal) => {
         course.style.display = "";
       }
     });
+    removeValidClassFromInput(Array.from(form.querySelectorAll("input")));
     form.reset();
+    modal.close();
+  });
+};
+
+const clearCoursesSetFilters = (modal) => {
+  let shownCount = 0;
+  const clearFiltersButton = document.querySelector("#clearFilters");
+  clearFiltersButton.addEventListener("click", () => {
+    listOfCoursesSpace.querySelectorAll(".card-link").forEach((card) => {
+      if (shownCount <= availableSpace) {
+        card.style.display = "";
+        shownCount++;
+      } else {
+        card.style.display = "none";
+      }
+    });
     modal.close();
   });
 };
@@ -367,6 +389,7 @@ const addChooseSetOfCoursesButtonAction = () => {
       });
     });
   });
+  clearCoursesSetFilters(modal);
   submitChooseCoursesSetForm(modal);
 };
 

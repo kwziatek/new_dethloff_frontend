@@ -1,5 +1,4 @@
 What's next
-  - add "clear filters" button in "choose set of courses" dialog
   - design the course details page
   - fix some minor stylistic issues across the app
   - clean up the css into components groups which can be used multiple times, DRY!
@@ -58,3 +57,4 @@ done:
       - implement "wybierz grupe kursów" button logic - can be just a another dialog with one input field - keep it simple
 
   - apply the dialog styles to all dialogs - keep in global css, keep it clean
+  - add "clear filters" button in "choose set of courses" dialog

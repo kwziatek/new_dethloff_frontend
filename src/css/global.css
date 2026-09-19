@@ -149,16 +149,6 @@ a {
   color: #212529;
 }
 
-.btn-dialog {
-  font-size: 1rem;
-  padding: 0.5rem 1rem;
-  border-radius: 6px;
-  border: none;
-  cursor: pointer;
-  font-weight: 500;
-  margin: 1rem 0rem 0rem;
-}
-
 /* button section */
 
 /* toast notification section */
@@ -292,6 +282,22 @@ dialog .form-control:focus-within {
 dialog::backdrop {
   background-color: rgba(0, 0, 0, 0.5);
   backdrop-filter: blur(2px);
+}
+
+dialog .btn-dialog {
+  font-size: 1.5rem;
+  padding: 0.5rem 1rem;
+  border-radius: 6px;
+  border: none;
+  cursor: pointer;
+  font-weight: 500;
+  margin: 1rem 0.5rem 0rem;
+}
+
+dialog .btn-section {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
 }
 
 /* dialog section */

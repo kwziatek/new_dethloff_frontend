@@ -105,16 +105,18 @@
         </datalist>
       </div>
 
-      <button type="sumbit" class="btn-dialog" id="saveCourse">Zapisz</button>
-      <button
-        type="button"
-        class="btn-dialog"
-        id="cancelCreatingCourse"
-        type="submit"
-        onclick="addCourseModal.close()"
-      >
-        Anuluj
-      </button>
+      <div class="btn-section">
+        <button type="sumbit" class="btn-dialog" id="saveCourse">Zapisz</button>
+        <button
+          type="button"
+          class="btn-dialog"
+          id="cancelCreatingCourse"
+          type="submit"
+          onclick="addCourseModal.close()"
+        >
+          Anuluj
+        </button>
+      </div>
     </form>
   </dialog>
 
@@ -129,25 +131,32 @@
           placeholder="np. '25/26"
           autocomplete="off"
           autofocus
+          required
         />
 
         <ul id="coursesSetDropdown2" class="dropdown-list"></ul>
         <input id="chosenCoursesSetId2" type="hidden" />
       </div>
-      <label></label>
 
-      <button type="submit" class="btn-dialog" id="confirmCoursesSet">
-        Wyszukaj
-      </button>
-      <button
-        type="button"
-        class="btn-dialog"
-        id="closeCourseModal"
-        type="submit"
-        onclick="chooseCoursesSetModal.close()"
-      >
-        Anuluj
-      </button>
+      <div class="btn-section">
+        <div class="inner-btn-section">
+          <button type="submit" class="btn-dialog" id="confirmCoursesSet">
+            Wyszukaj
+          </button>
+          <button type="button" class="btn-dialog" id="clearFilters">
+            Wyczyść filtry
+          </button>
+        </div>
+        <button
+          type="button"
+          class="btn-dialog"
+          id="closeCourseModal"
+          type="submit"
+          onclick="chooseCoursesSetModal.close()"
+        >
+          Anuluj
+        </button>
+      </div>
     </form>
   </dialog>
 </html>
