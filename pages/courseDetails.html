@@ -1,0 +1,79 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="shortcut icon"
+      type="image/x-icon"
+      href="../assets/new_shortcut.png"
+    />
+    <link rel="stylesheet" href="/src/css/courses.css" />
+    <script src="/src/js/auth-check.js"></script>
+    <script type="module" src="/src/js/global.js"></script>
+    <script type="module" src="/src/js/courseDetails.js"></script>
+    <title>Dethloff App</title>
+  </head>
+  <body>
+    <header>
+      <h1>Sczegóły kursu</h1>
+      <div id="buttonColumns">
+        <div class="defaultButtons">
+          <button type="button" id="goBack" class="btn btn-info">Powrót</button>
+          <button type="button" id="logOut" class="btn btn-danger">
+            Wyloguj
+          </button>
+        </div>
+        <div id="?SpecificButtons" class="pageSpecificButtons">
+          <button type="button" id="calendar" class="btn btn-info">
+            Kalendarz
+          </button>
+        </div>
+      </div>
+    </header>
+    <main>
+      <div class="box-of-containers">
+        <div class="standard-container" id="essentialData">
+          <h1>Kluczowe informacje</h1>
+          <div class="essential-data-section">
+            <div class="section">
+              <p id="courseName" class="section-title">Grupa:</p>
+              <p>Hardcoded A2(1)M</p>
+            </div>
+            <div id="courseLevel" class="section">
+              <p class="section-title">Poziom:</p>
+              <p>Hardcoded A2</p>
+            </div>
+            <div class="section">
+              <p id="courseTeacher" class="section-title">Lektor:</p>
+              <p>Hardcoded TW</p>
+            </div>
+            <div class="section">
+              <p id="courseHours" class="section-title">
+                Liczba godzin zreazlizowanych / suma:
+              </p>
+              <p>Hardcoded 12/60</p>
+            </div>
+            <div id="courseCoursesSet" class="section">
+              <p class="section-title">Grupa kursów</p>
+              <p>Hardcoded 2024/25</p>
+            </div>
+            <div class="section">
+              <p id="courseClassrom" class="section-title">Sala</p>
+              <p>Hardcoded 7</p>
+            </div>
+          </div>
+        </div>
+        <div class="bottom-row">
+          <div class="left-container">
+            <h1>Uczniowie (<span id="students-count">hardcoded 14</span>)</h1>
+          </div>
+          <div class="right-container">
+            <h1>Terminy zajęć</h1>
+          </div>
+        </div>
+      </div>
+    </main>
+    <footer></footer>
+  </body>
+</html>

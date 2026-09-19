@@ -347,3 +347,74 @@ input#filterBar {
   font-size: 1.3rem;
 }
 /* cards container */
+
+/*box of container */
+.box-of-containers {
+  border-radius: 5px;
+  width: 80vw;
+}
+
+.box-of-containers h1 {
+  font-size: 2rem;
+  justify-content: flex-start;
+  padding: 0.5rem 0.4rem;
+}
+/*box of container */
+
+/*standard container */
+.standard-container {
+  height: 30vh;
+  background-color: #636b2f;
+  color: #bac095;
+  margin: 1rem;
+  border-radius: inherit;
+}
+
+.essential-data-section {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+}
+
+.essential-data-section .section {
+  margin: 1rem;
+  -webkit-margin-collapse: collapse;
+}
+
+.essential-data-section .section p:not(.section-title) {
+  font-size: 1.5rem;
+  font-weight: bold;
+}
+
+.essential-data-section .section .section-title {
+  font-size: 1.3rem;
+}
+/*standard container */
+
+/*bottom row */
+.bottom-row {
+  display: flex;
+  border-radius: inherit;
+}
+/*botton row */
+
+/*left container */
+.left-container {
+  min-height: 20vh;
+  width: 45%;
+  background-color: #636b2f;
+  color: #bac095;
+  margin: 1rem;
+  border-radius: inherit;
+}
+/*left container */
+
+/*right container */
+.right-container {
+  min-height: 20vh;
+  flex-grow: 1;
+  background-color: #636b2f;
+  color: #bac095;
+  margin: 1rem;
+  border-radius: inherit;
+}
+/*right container */
