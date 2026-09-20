@@ -412,10 +412,11 @@ input#filterBar {
 /*left container */
 .left-container {
   min-height: 20vh;
-  width: 45%;
+  width: 35%;
   background-color: #636b2f;
   color: #bac095;
   margin: 1rem;
+  padding-top: 1px;
   border-radius: inherit;
 }
 
@@ -446,6 +447,7 @@ input#filterBar {
   background-color: #636b2f;
   color: #bac095;
   margin: 1rem;
+  padding-top: 1px;
   border-radius: inherit;
 }
 /*right container */
