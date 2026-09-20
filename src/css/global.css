@@ -359,6 +359,17 @@ input#filterBar {
   justify-content: flex-start;
   padding: 0.5rem 0.4rem;
 }
+
+.box-of-containers .container-header {
+  display: flex;
+  justify-content: space-between;
+  margin: 1rem;
+}
+
+.box-of-containers .icon-button {
+  width: 35px;
+  height: 35px;
+}
 /*box of container */
 
 /*standard container */
@@ -367,6 +378,7 @@ input#filterBar {
   background-color: #636b2f;
   color: #bac095;
   margin: 1rem;
+  padding-top: 1px;
   border-radius: inherit;
 }
 
@@ -405,6 +417,25 @@ input#filterBar {
   color: #bac095;
   margin: 1rem;
   border-radius: inherit;
+}
+
+.left-container .container-header {
+  display: flex;
+  justify-content: space-between;
+  margin: 1rem;
+}
+
+.left-container .main-section {
+  font-size: 1.5rem;
+  margin: 1rem;
+}
+
+.left-container .main-section p {
+  padding-top: 0.5rem;
+}
+
+.left-container .main-section .plus-icon {
+  background-color: #636b2f;
 }
 /*left container */
 
