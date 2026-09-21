@@ -226,7 +226,7 @@ a {
 
 .dropdown-list p {
   background-color: white;
-  font-size: 3rem;
+  font-size: 1rem;
   padding: 10px;
 }
 
@@ -298,6 +298,34 @@ dialog .btn-section {
   width: 100%;
   display: flex;
   justify-content: space-between;
+}
+
+dialog .dropdown-list {
+  position: absolute;
+  top: 10;
+  display: none;
+  list-style-type: none;
+}
+
+dialog .dropdown-list li {
+  border-right: 1px solid black;
+  border-left: 1px solid black;
+  border-bottom: 1px solid black;
+  border-color: black;
+}
+
+dialog .dropdown-list li:first-child {
+  border-top: 1px solid black;
+}
+
+dialog .dropdown-list p {
+  background-color: white;
+  font-size: 3rem;
+  padding: 10px;
+}
+
+dialog .dropdown-list p:hover {
+  background-color: grey;
 }
 
 /* dialog section */
