@@ -79,11 +79,21 @@ const fillPageWithCourseData = (courseData) => {
   fillEnrolledStudents(courseData);
 };
 
-const addEnrollStudentButtonAction = (studentInput, studentsDropdown) => {
+const addEnrollStudentButtonAction = (
+  studentInput,
+  studentsDropdown,
+  chosenStudentHiddenInput,
+) => {
   const enrollButton = leftContainer.querySelector("#enroll-student-button");
 
   studentInput.addEventListener("input", (e) => {
     const query = e.target.value.toLowerCase().trim();
+
+    if (studentInput.classList.contains("valid")) {
+      studentInput.classList.remove("valid");
+      studentsDropdown.style.display = "block";
+      chosenStudentHiddenInput.value = "";
+    }
 
     Array.from(mainSection.querySelectorAll(".studentLI")).forEach(
       (studentLI) => {
@@ -98,8 +108,8 @@ const addEnrollStudentButtonAction = (studentInput, studentsDropdown) => {
     );
   });
 
-  enrollButton.addEventListener("click", (e) => {
-    const isHidden = studentInput.style.display;
+  enrollButton.addEventListener("click", () => {
+    const isHidden = studentInput.style.display === "none";
     if (isHidden) {
       studentInput.style.display = "block";
       studentsDropdown.style.display = "block";
@@ -107,6 +117,15 @@ const addEnrollStudentButtonAction = (studentInput, studentsDropdown) => {
       studentInput.style.display = "none";
       studentsDropdown.style.display = "none";
     }
+  });
+
+  studentsDropdown.addEventListener("click", (e) => {
+    // console.log(e.target);
+    studentInput.value = e.target.innerText;
+    studentsDropdown.style.display = "none";
+    chosenStudentHiddenInput.value = e.target.dataset.personId;
+    studentInput.classList.add("valid");
+    console.log(chosenStudentHiddenInput.value);
   });
 };
 
@@ -118,7 +137,12 @@ const addOtherHTMLElements = () => {
   const studentsDropdown = document.createElement("ul");
   studentsDropdown.classList.add("dropdown-list");
   mainSection.appendChild(studentsDropdown);
-  return [studentInput, studentsDropdown];
+
+  const chosenStudentId = document.createElement("input");
+  chosenStudentId.style.visibility = "hidden";
+  mainSection.appendChild(chosenStudentId);
+
+  return [studentInput, studentsDropdown, chosenStudentId];
 };
 
 const loadPageContent = async () => {
@@ -128,9 +152,14 @@ const loadPageContent = async () => {
   ]);
 
   fillPageWithCourseData(courseData);
-  const [studentInput, studentsDropdown] = addOtherHTMLElements();
+  const [studentInput, studentsDropdown, chosenStudentHiddenInput] =
+    addOtherHTMLElements();
 
-  addEnrollStudentButtonAction(studentInput, studentsDropdown);
+  addEnrollStudentButtonAction(
+    studentInput,
+    studentsDropdown,
+    chosenStudentHiddenInput,
+  );
   createNameSurnameDropdownListElements(
     studentsData,
     "studentLI",
