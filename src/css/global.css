@@ -396,8 +396,12 @@ input#filterBar {
 }
 
 .box-of-containers .icon-button {
-  width: 35px;
-  height: 35px;
+  width: 50px;
+  height: 50px;
+}
+
+.box-of-containers .icon-button.hidden {
+  visibility: hidden;
 }
 /*box of container */
 

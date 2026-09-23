@@ -85,6 +85,9 @@ const addEnrollStudentButtonAction = (
   chosenStudentHiddenInput,
 ) => {
   const enrollButton = leftContainer.querySelector("#enroll-student-button");
+  const confirmButton = leftContainer.querySelector(
+    "#confirm-enroll-student-button",
+  );
 
   studentInput.addEventListener("input", (e) => {
     const query = e.target.value.toLowerCase().trim();
@@ -93,6 +96,7 @@ const addEnrollStudentButtonAction = (
       studentInput.classList.remove("valid");
       studentsDropdown.style.display = "block";
       chosenStudentHiddenInput.value = "";
+      confirmButton.classList.add("hidden");
     }
 
     Array.from(mainSection.querySelectorAll(".studentLI")).forEach(
@@ -112,11 +116,31 @@ const addEnrollStudentButtonAction = (
     const isHidden = studentInput.style.display === "none";
     if (isHidden) {
       studentInput.style.display = "block";
-      studentsDropdown.style.display = "block";
+      if (!studentInput.classList.contains("valid")) {
+        studentsDropdown.style.display = "block";
+      }
     } else {
       studentInput.style.display = "none";
       studentsDropdown.style.display = "none";
     }
+
+    confirmButton.addEventListener("click", async () => {
+      try {
+        const data = await api.post(
+          `/api/courses/${courseId}/students/${chosenStudentHiddenInput.value}`,
+          null,
+          auth,
+        );
+        console.log(data);
+        showToast("Zapisano ucznia na kurs", "success");
+      } catch (e) {
+        showToast("Błąd serwera", "error");
+      } finally {
+        confirmButton.classList.add("hidden");
+        studentsDropdown.style.display = "none";
+        studentInput.style.display = "none";
+      }
+    });
   });
 
   studentsDropdown.addEventListener("click", (e) => {
@@ -125,7 +149,7 @@ const addEnrollStudentButtonAction = (
     studentsDropdown.style.display = "none";
     chosenStudentHiddenInput.value = e.target.dataset.personId;
     studentInput.classList.add("valid");
-    console.log(chosenStudentHiddenInput.value);
+    confirmButton.classList.remove("hidden");
   });
 };
 
