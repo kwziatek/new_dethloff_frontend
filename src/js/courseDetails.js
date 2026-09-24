@@ -14,6 +14,7 @@ const allStudents = [];
 
 const standardContainer = document.querySelector(".standard-container");
 const leftContainer = document.querySelector(".left-container");
+const studentsCount = leftContainer.querySelector("#students-count");
 const mainSection = leftContainer.querySelector(".main-section");
 const rightContainer = document.querySelector(".right-container");
 const auth = {
@@ -64,7 +65,6 @@ const fillEsstentialData = (courseData) => {
 };
 
 const fillEnrolledStudents = (courseData) => {
-  const studentsCount = leftContainer.querySelector("#students-count");
   studentsCount.innerText = courseData.students.length;
 
   courseData.students.forEach((student) => {
@@ -77,6 +77,14 @@ const fillEnrolledStudents = (courseData) => {
 const fillPageWithCourseData = (courseData) => {
   fillEsstentialData(courseData);
   fillEnrolledStudents(courseData);
+};
+
+const updateEnrolledStudentsList = (studentInput, mainSection) => {
+  const studentData = document.createElement("p");
+  studentData.innerText = studentInput.value;
+  studentData.style.fontWeight = "bold";
+  mainSection.insertBefore(studentData, studentInput);
+  studentsCount.innerText = parseInt(studentsCount.innerText) + 1;
 };
 
 const addEnrollStudentButtonAction = (
@@ -116,6 +124,7 @@ const addEnrollStudentButtonAction = (
     const isHidden = studentInput.style.display === "none";
     if (isHidden) {
       studentInput.style.display = "block";
+      studentInput.focus();
       if (!studentInput.classList.contains("valid")) {
         studentsDropdown.style.display = "block";
       }
@@ -123,24 +132,26 @@ const addEnrollStudentButtonAction = (
       studentInput.style.display = "none";
       studentsDropdown.style.display = "none";
     }
+  });
 
-    confirmButton.addEventListener("click", async () => {
-      try {
-        const data = await api.post(
-          `/api/courses/${courseId}/students/${chosenStudentHiddenInput.value}`,
-          null,
-          auth,
-        );
-        console.log(data);
-        showToast("Zapisano ucznia na kurs", "success");
-      } catch (e) {
-        showToast("Błąd serwera", "error");
-      } finally {
-        confirmButton.classList.add("hidden");
-        studentsDropdown.style.display = "none";
-        studentInput.style.display = "none";
-      }
-    });
+  confirmButton.addEventListener("click", async () => {
+    try {
+      await api.post(
+        `/api/courses/${courseId}/students/${chosenStudentHiddenInput.value}`,
+        null,
+        auth,
+      );
+      showToast("Zapisano ucznia na kurs", "success");
+      updateEnrolledStudentsList(studentInput, mainSection);
+    } catch (e) {
+      console.log(e);
+      showToast("Błąd serwera", "error");
+    } finally {
+      confirmButton.classList.add("hidden");
+      studentsDropdown.style.display = "none";
+      studentInput.style.display = "none";
+      studentInput.value = "";
+    }
   });
 
   studentsDropdown.addEventListener("click", (e) => {
